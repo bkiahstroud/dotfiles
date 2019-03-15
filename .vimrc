@@ -81,6 +81,7 @@ Plugin 'slim-template/vim-slim.git'       " slim template highlighting
 Plugin 'tpope/vim-fugitive'               " fugitive
 Plugin 'ctrlpvim/ctrlp.vim'               " ctrlp
 Plugin 'ervandew/supertab'                " supertab
+Plugin 'itchyny/lightline.vim'            " lightline
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
@@ -175,6 +176,9 @@ colorscheme palenight
 if (has("termguicolors"))
   set termguicolors
 endif
+
+" Lightline config
+let g:lightline = { 'colorscheme': 'palenight' }
 
 " Autocomplete
 set omnifunc=syntaxcomplete#Complete
