@@ -78,6 +78,9 @@ Plugin 'tpope/vim-endwise'                " endwise
 Plugin 'terryma/vim-multiple-cursors'     " multiple-cursors
 Plugin 'tpope/vim-surround'               " surround
 Plugin 'slim-template/vim-slim.git'       " slim template highlighting
+Plugin 'tpope/vim-fugitive'               " fugitive
+Plugin 'ctrlpvim/ctrlp.vim'               " ctrlp
+Plugin 'ervandew/supertab'                " supertab
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
@@ -136,6 +139,25 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Config NERDCommenter
 let NERDSpaceDelims=1               " space around delimiters
 let NERDRemoveExtraSpaces=1
+
+"" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --vimgrep'
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+let g:ackhighlight = 1
+let g:ack_autofold_results = 1
+let g:ackpreview = 1
+
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>'
 
 " multicursor config
 let g:multi_cursor_use_default_mapping=0
