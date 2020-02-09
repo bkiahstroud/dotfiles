@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin on            " allows nerdcommenter to work correctly
 syntax on
+syntax enable
 set clipboard=unnamed         " configure terminal vim to use mac clipboard
 let mapleader="\<space>"      " remap leader to <space> bar
 set backspace=2               " make backspace work like most other apps
@@ -33,8 +34,8 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 let g:indentLine_char='|'
 
 " Enable mouse in Iterm
-" set mouse=a
-" set ttymouse=xterm2
+set mouse=a
+set ttymouse=xterm2
 
 " Ruby autocomplete
 autocmd FileType ruby,eruby,haml,slim let g:rubycomplete_buffer_loading = 1
@@ -82,9 +83,14 @@ Plugin 'tpope/vim-fugitive'               " fugitive
 Plugin 'ctrlpvim/ctrlp.vim'               " ctrlp
 Plugin 'ervandew/supertab'                " supertab
 Plugin 'itchyny/lightline.vim'            " lightline
+" Throwing segmentation errors on :Bdelete
+" Plugin 'moll/vim-bbye'                  " bbye
+Plugin 'tpope/vim-repeat'                 " vim-repeat
+Plugin 'easymotion/vim-easymotion'        " easymotion
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
+" alt theme: https://vimawesome.com/plugin/vim-quantum
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,6 +112,17 @@ inoremap jk <Esc>
 vnoremap jk <Esc>
 inoremap JK <Esc>
 vnoremap JK <Esc>
+" remap annoying keys
+nmap J }
+nmap K {
+
+" AUTOCOMPLETE DELIMITERS
+inoremap {<CR> {<CR>}<ESC>O
+" RUBY AUTOCOMPLETE DELIMITERS
+inoremap #{ #{}<left>
+inoremap <% <%  %><left><left><left>
+inoremap <%= <%=  %><left><left><left>
+
 " LEADER KEY MAPPINGS
 " Make buffer switching easier
 nmap <leader>L :bnext<CR>
@@ -118,17 +135,28 @@ vnoremap <leader>l $h
 " Jump to beginning of line
 nmap <leader>hh 0
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><CR> :noh<CR>
 " Write file
-nmap <leader>w :w<cr>
+nmap <leader>w :w<CR>
 " Quit Vim
-nmap <leader>q :q<cr>
+nmap <leader>q :q<CR>
 " Quit Vim (without saving)
-nmap <leader>Q :q!<cr>
+nmap <leader>Q :q!<CR>
 " Quit current buffer
-nmap <leader>b :bd<cr>
+"" Switch if bbye plugin is reactivated
+nmap <leader>b :bd<CR>
+" nmap <leader>b :Bdelete<CR>
 " Switch (split) buffer
 nnoremap <leader>s <C-W><C-W>
+" Tab shortcuts
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>tt :tabnext<CR>
+nnoremap <leader>tp :tabprev<CR>
+nnoremap <leader>tq :tabclose<CR>
+" Quickly open vim-fugitive :Gstatus buffer
+nnoremap <leader>k :Gstatus<CR>
+" Quickly open vim-fugitive :Gblame buffer
+nnoremap <leader>j :Gblame<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.DS_Store', '*.swp', '*.swo']
@@ -158,7 +186,7 @@ let g:ack_autofold_results = 1
 let g:ackpreview = 1
 
 cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>'
+nnoremap <leader>a :Ack!<Space>'
 
 " multicursor config
 let g:multi_cursor_use_default_mapping=0
@@ -168,7 +196,8 @@ let g:multi_cursor_start_key='g<C-o>'
 let g:multi_cursor_next_key='<C-o>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_quit_key='jk'
+let g:multi_cursor_exit_from_visual_mode=0
 
 " Theme config
 set background=dark
@@ -179,6 +208,28 @@ endif
 
 " Lightline config
 let g:lightline = { 'colorscheme': 'palenight' }
+
+" easymotion config
+" map <leader> <Plug>(easymotion-prefix)
+" let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <leader><leader>s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+
+" <leader>f{char} to move to {char}
+" nmap <leader>f <Plug>(easymotion-overwin-f)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+" map <leader>j <Plug>(easymotion-j)
+" map <leader>k <Plug>(easymotion-k)
 
 " Autocomplete
 set omnifunc=syntaxcomplete#Complete
