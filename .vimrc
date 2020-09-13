@@ -11,6 +11,10 @@ set showcmd                   " Show us the command we're typing
 set hlsearch                  " highlight search items
 set updatetime=100
 set number
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " set relative line numbering hybrid number mode
 " set relativenumber
@@ -36,6 +40,17 @@ let g:indentLine_char='|'
 " Enable mouse in Iterm
 set mouse=a
 set ttymouse=xterm2
+
+" source: https://vi.stackexchange.com/a/53
+" Let's save undo info!
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
 
 " Ruby autocomplete
 autocmd FileType ruby,eruby,haml,slim let g:rubycomplete_buffer_loading = 1
@@ -87,6 +102,9 @@ Plugin 'itchyny/lightline.vim'            " lightline
 " Plugin 'moll/vim-bbye'                  " bbye
 Plugin 'tpope/vim-repeat'                 " vim-repeat
 Plugin 'easymotion/vim-easymotion'        " easymotion
+Plugin 'dense-analysis/ale'               " ale
+Plugin 'maximbaz/lightline-ale'           " lightline-ale
+Plugin 'editorconfig/editorconfig-vim'    " editorconfig
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
@@ -115,6 +133,8 @@ vnoremap JK <Esc>
 " remap annoying keys
 nmap J }
 nmap K {
+vmap Jk }k
+vmap K {
 
 " AUTOCOMPLETE DELIMITERS
 inoremap {<CR> {<CR>}<ESC>O
@@ -199,6 +219,15 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='jk'
 let g:multi_cursor_exit_from_visual_mode=0
 
+" ALE config
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'ruby': ['rubocop'],
+\ 'typescript': ['tslint'],
+\}
+let g:ale_linters_explicit = 1 " Only run linters named in ale_linters settings.
+let g:ale_sign_column_always = 1
+
 " Theme config
 set background=dark
 colorscheme palenight
@@ -207,7 +236,30 @@ if (has("termguicolors"))
 endif
 
 " Lightline config
-let g:lightline = { 'colorscheme': 'palenight' }
+let g:lightline = {
+\  'colorscheme': 'palenight',
+\  'active': {
+\    'left': [
+\              [ 'mode', 'paste' ],
+\              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+\            ],
+\    'right': [
+\               [ 'lineinfo', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+\               [ 'percent' ],
+\               [ 'filetype' ]
+\             ]
+\  },
+\  'component_function': {
+\    'gitbranch': 'fugitive#head'
+\  },
+\}
+let g:lightline.component_expand = {
+\  'linter_checking': 'lightline#ale#checking',
+\  'linter_infos': 'lightline#ale#infos',
+\  'linter_warnings': 'lightline#ale#warnings',
+\  'linter_errors': 'lightline#ale#errors',
+\  'linter_ok': 'lightline#ale#ok',
+\}
 
 " easymotion config
 " map <leader> <Plug>(easymotion-prefix)
@@ -230,6 +282,11 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 " map <leader>j <Plug>(easymotion-j)
 " map <leader>k <Plug>(easymotion-k)
+
+" editorconfig
+" (https://github.com/editorconfig/editorconfig-vim#excluded-patterns)
+" 'To ensure that this plugin works well with Tim Pope's fugitive'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Autocomplete
 set omnifunc=syntaxcomplete#Complete

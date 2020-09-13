@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Kiah
+  email = kiah@notch8.com
+  username = bkiahstroud
+[core]
+  autocrlf = input
+  editor = vim
+  excludesfile = /Users/kiah/.gitignore
+[push]
+  default = simple
+  followTags = true
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  undolast = reset --soft HEAD~
+  last = log -1 HEAD
+  prune = fetch --prune
+  undo = reset --soft HEAD^
+  stashall = stash --include-untracked
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[status]
+  showUntrackedFiles = all
