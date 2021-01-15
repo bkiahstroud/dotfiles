@@ -105,6 +105,7 @@ Plugin 'easymotion/vim-easymotion'        " easymotion
 Plugin 'dense-analysis/ale'               " ale
 Plugin 'maximbaz/lightline-ale'           " lightline-ale
 Plugin 'editorconfig/editorconfig-vim'    " editorconfig
+Plugin 'tpope/vim-abolish'                " abolish.vim
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
@@ -142,6 +143,11 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap #{ #{}<left>
 inoremap <% <%  %><left><left><left>
 inoremap <%= <%=  %><left><left><left>
+inoremap <%# <%#  %><left><left><left>
+
+" GitHub username in TODOs and NOTEs
+inoremap TODO TODO(bkiahstroud)
+inoremap NOTE NOTE(bkiahstroud)
 
 " LEADER KEY MAPPINGS
 " Make buffer switching easier
@@ -177,6 +183,17 @@ nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>k :Gstatus<CR>
 " Quickly open vim-fugitive :Gblame buffer
 nnoremap <leader>j :Gblame<CR>
+" Copy relative filepath to clipboard
+nnoremap <leader>cfp :let @+ = expand('%')<CR>
+" Copy filename to clipboard
+nnoremap <leader>cfn :let @+ = expand('%:t')<CR>
+" Replace old Ruby hash rocket syntax
+nnoremap <leader>R :HashRocketReplace<CR>
+vnoremap <leader>R :HashRocketReplace<CR>
+
+" COMMANDS
+" command HashRocketReplace %s/:\(\w\+\)\s*=>\s*/\1: /gc
+command -range=% HashRocketReplace silent execute <line1>.','.<line2>.'s/:\(\w\+\)\s*=>\s*/\1: /gc'
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.DS_Store', '*.swp', '*.swo']

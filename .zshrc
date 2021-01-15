@@ -129,6 +129,10 @@ alias gs='git status'
 # Show diffs inline
 alias gdc='git diff --color-words'
 
+# Requires ohmyzsh git plugin
+# Non-plugin equivalent: 'git pull && git fetch -ap'
+alias glaf='gl && gfa'
+
 # Update ohmyzsh and brew
 alias upgrade='omz update && brew update && brew upgrade'
 
@@ -140,6 +144,7 @@ alias ls='exa'
 
 # Custom PATH export for executables / libraries
 export PATH="./bin:$PATH:$HOME/scripts/dnuke:$HOME/scripts"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Path to anywhere from anywhere (prioritizes dev directories)
 export CDPATH=".:/Users/kiah/Development:/Users/kiah/Development/personal:/Users/kiah/"
