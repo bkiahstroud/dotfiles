@@ -41,6 +41,9 @@ let g:indentLine_char='|'
 set mouse=a
 set ttymouse=xterm2
 
+" Highlight patterns
+silent execute 'match Todo /OVERRIDE/'
+
 " source: https://vi.stackexchange.com/a/53
 " Let's save undo info!
 if !isdirectory($HOME."/.vim")
@@ -106,9 +109,11 @@ Plugin 'dense-analysis/ale'               " ale
 Plugin 'maximbaz/lightline-ale'           " lightline-ale
 Plugin 'editorconfig/editorconfig-vim'    " editorconfig
 Plugin 'tpope/vim-abolish'                " abolish.vim
+Plugin 'junegunn/fzf'                     " fzf
 
 " Themes
 Plugin 'drewtempelmeyer/palenight.vim'    " palenight theme
+" Plugin 'wojciechkepka/vim-github-dark'    " github dark theme
 " alt theme: https://vimawesome.com/plugin/vim-quantum
 
 " All of your Plugins must be added before the following line
@@ -145,8 +150,7 @@ inoremap <% <%  %><left><left><left>
 inoremap <%= <%=  %><left><left><left>
 inoremap <%# <%#  %><left><left><left>
 
-" GitHub username in TODOs and NOTEs
-inoremap TODO TODO(bkiahstroud)
+" GitHub username in NOTEs
 inoremap NOTE NOTE(bkiahstroud)
 
 " LEADER KEY MAPPINGS
@@ -167,7 +171,7 @@ nmap <leader>w :w<CR>
 " Quit Vim
 nmap <leader>q :q<CR>
 " Quit Vim (without saving)
-nmap <leader>Q :q!<CR>
+nmap <leader>Q :qa!<CR>
 " Quit current buffer
 "" Switch if bbye plugin is reactivated
 nmap <leader>b :bd<CR>
@@ -179,10 +183,10 @@ nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tt :tabnext<CR>
 nnoremap <leader>tp :tabprev<CR>
 nnoremap <leader>tq :tabclose<CR>
-" Quickly open vim-fugitive :Gstatus buffer
-nnoremap <leader>k :Gstatus<CR>
-" Quickly open vim-fugitive :Gblame buffer
-nnoremap <leader>j :Gblame<CR>
+" Quickly open vim-fugitive :Git buffer
+nnoremap <leader>k :Git<CR>
+" Quickly open vim-fugitive :Git blame buffer
+nnoremap <leader>j :Git blame<CR>
 " Copy relative filepath to clipboard
 nnoremap <leader>cfp :let @+ = expand('%')<CR>
 " Copy filename to clipboard
@@ -190,10 +194,16 @@ nnoremap <leader>cfn :let @+ = expand('%:t')<CR>
 " Replace old Ruby hash rocket syntax
 nnoremap <leader>R :HashRocketReplace<CR>
 vnoremap <leader>R :HashRocketReplace<CR>
+" Replace \n characters with actual new lines - used to format error traces
+nnoremap <leader>fet :FormatErrorTrace<CR>
+" Jump to end/beginning of line in insert mode
+inoremap <C-e> <Esc>$a
+inoremap <C-a> <Esc>^i
 
 " COMMANDS
 " command HashRocketReplace %s/:\(\w\+\)\s*=>\s*/\1: /gc
 command -range=% HashRocketReplace silent execute <line1>.','.<line2>.'s/:\(\w\+\)\s*=>\s*/\1: /gc'
+command FormatErrorTrace silent execute '%s/\\n/\r/g'
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.DS_Store', '*.swp', '*.swo']
@@ -207,17 +217,25 @@ let NERDSpaceDelims=1               " space around delimiters
 let NERDRemoveExtraSpaces=1
 
 "" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ackprg = 'ag --vimgrep'
+" if executable('ag')
+  " " Use ag over grep
+  " set grepprg=ag\ --nogroup\ --nocolor
+  " let g:ackprg = 'ag --vimgrep'
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+  " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g \""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+  " " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 0
+" endif
+
+" fzf config
+" This is the default extra key bindings
+" Take over ctrlp
+set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :Files<Cr>
+
+" Ack config
 let g:ackhighlight = 1
 let g:ack_autofold_results = 1
 let g:ackpreview = 1
