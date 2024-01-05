@@ -133,37 +133,38 @@ filetype plugin indent on    " required
 " CUSTOM KEY MAPPINGS
 " Hitting ESC is hard
 inoremap jk <Esc>
-vnoremap jk <Esc>
+" vnoremap jk <Esc> " causes delay, simply exit using v
 inoremap JK <Esc>
-vnoremap JK <Esc>
+" vnoremap JK <Esc> " causes delay, simply exit using V
 " remap annoying keys
 nmap J }
 nmap K {
 vmap Jk }k
 vmap K {
 
+" !WARNING! These don't work well in VS Code
 " AUTOCOMPLETE DELIMITERS
-inoremap {<CR> {<CR>}<ESC>O
+" inoremap {<CR> {<CR>}<ESC>O
 " RUBY AUTOCOMPLETE DELIMITERS
-inoremap #{ #{}<left>
-inoremap <% <%  %><left><left><left>
-inoremap <%= <%=  %><left><left><left>
-inoremap <%# <%#  %><left><left><left>
+" inoremap #{ #{}<left>
+" inoremap <% <%  %><left><left><left>
+" inoremap <%= <%=  %><left><left><left>
+" inoremap <%# <%#  %><left><left><left>
 
 " GitHub username in NOTEs
 inoremap NOTE NOTE(bkiahstroud)
 
 " LEADER KEY MAPPINGS
 " Make buffer switching easier
-nmap <leader>L :bnext<CR>
-nmap <leader>H :bprev<CR>
+" nmap <leader>L :bnext<CR>
+" nmap <leader>H :bprev<CR>
 " Jump to first and last character of line, respectively
 nnoremap <leader>h ^
 vnoremap <leader>h ^
 nnoremap <leader>l $
 vnoremap <leader>l $h
 " Jump to beginning of line
-nmap <leader>hh 0
+nmap <leader>H 0
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><CR> :noh<CR>
 " Write file
@@ -232,7 +233,7 @@ let NERDRemoveExtraSpaces=1
 " fzf config
 " This is the default extra key bindings
 " Take over ctrlp
-set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 nnoremap <C-p> :Files<Cr>
 
 " Ack config
@@ -285,7 +286,7 @@ let g:lightline = {
 \             ]
 \  },
 \  'component_function': {
-\    'gitbranch': 'fugitive#head'
+\    'gitbranch': 'FugitiveHead'
 \  },
 \}
 let g:lightline.component_expand = {
@@ -302,7 +303,7 @@ let g:lightline.component_expand = {
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <leader><leader>s <Plug>(easymotion-overwin-f)
+" nmap <leader><leader>s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.

@@ -15,6 +15,7 @@ export ZSH="/Users/kiah/.oh-my-zsh"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -70,6 +71,8 @@ export ZSH="/Users/kiah/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,6 +96,9 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(rbenv init - zsh)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -120,7 +126,7 @@ alias scb='sc be bash'
 alias scc='sc console'
 
 # Make unified mode standard for diff command
-alias diff='diff -u'
+# alias diff='diff -u'
 
 # Quickly get to saved code gists
 alias vimcheats='vim ~/Development/code_cheat_sheet.txt'
@@ -143,6 +149,9 @@ alias gs='git status'
 # Show diffs inline
 alias gdc='git diff --color-words'
 
+# Push current branch and set upstream tracking to origin
+alias gpo='git push -u origin $(git_current_branch)'
+
 # Requires ohmyzsh git plugin
 # Non-plugin equivalent: 'git pull && git fetch -ap'
 alias glaf='gl && gfa'
@@ -158,11 +167,35 @@ alias ls='exa'
 
 # Lazy
 alias t='task'
+alias osm='opensaysme'
+
+# Copy markdown of commit message(s) for MR/PR descriptions
+alias gdesc='git log --reverse --pretty="format:## %s%n%n%H%n%n%b" main.. | pbcopy'
+
+alias dk='docker compose -f docker-compose-koppie.yml'
+
+alias t='task'
+alias ta='task add'
+alias ts='task sync'
+alias tu='task rc.context=none'
+
+alias v='nvim'
+
+alias z='zellij'
+
+alias gcs='gh copilot suggest'
+alias gce='gh copilot explain'
+
+# Accept suggestion from zsh-autosuggestions plugin
+bindkey '^n' autosuggest-accept
 
 # Custom PATH export for executables / libraries
-export PATH="./bin:$PATH:$HOME/scripts/dnuke:$HOME/scripts"
+export PATH="$PATH:$HOME/scripts/dnuke:$HOME/scripts"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# Doom Emacs
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Path to anywhere from anywhere (prioritizes dev directories)
 export CDPATH=".:/Users/kiah/Development:/Users/kiah/Development/personal:/Users/kiah/"
@@ -172,12 +205,23 @@ export CDPATH=".:/Users/kiah/Development:/Users/kiah/Development/personal:/Users
 # export GREP_OPTIONS='-rn --exclude-dir=log --exclude-dir=tmp --exclude-dir=.bundle --exclude-dir=.config'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+# source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # Use robbyrussell's zsh theme
-source /usr/local/opt/powerlevel10k/config/p10k-robbyrussell.zsh
+source $ZSH_CUSTOM/themes/powerlevel10k/config/p10k-robbyrussell.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Java / Ant
+export ANT_HOME="/Users/kiah/dependencies/apache-ant-1.10.12"
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$ANT_HOME/bin:$PATH"
+
+export RIPGREP_CONFIG_PATH="/Users/kiah/dotfiles/.ripgreprc"
+
+export DOOMDIR="$HOME/.doom.d"
+
+export EDITOR="/opt/homebrew/bin/nvim"

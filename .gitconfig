@@ -1,11 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
   name = Benjamin Kiah Stroud
-  email = kiah@notch8.com
+  email = 32469930+bkiahstroud@users.noreply.github.com
   username = bkiahstroud
 [core]
   autocrlf = input
-  editor = vim
+  editor = nvim
   excludesfile = /Users/kiah/.gitignore
 [push]
   default = simple
@@ -23,3 +23,5 @@
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [status]
   showUntrackedFiles = all
+[commit]
+	template = /Users/kiah/.gitmessage
