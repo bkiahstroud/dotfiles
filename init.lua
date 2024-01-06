@@ -113,7 +113,17 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',
+    opts = {
+      triggers_blacklist = {
+        -- list of mode / prefixes that should never be hooked by WhichKey
+        -- this is mostly relevant for keymaps that start with a native binding
+        i = { "j", "k", "J" },
+        v = { "j", "k", "J" },
+      },
+    },
+  },
+
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -245,17 +255,35 @@ require('lazy').setup({
 
   {
     -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
+    'nvim-lualine/lualine.nvim',
     opts = {
       options = {
-        icons_enabled = false,
-        -- theme = 'onedark',
+        icons_enabled = true,
         theme = 'catppuccin-mocha',
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+        lualine_x = {'fileformat', 'filetype'},
+      },
+      inactive_sections = {
+        lualine_c = {},
+      },
+      -- TODO: Read from Harpoon list
+      -- tabline = {
+      --   lualine_z = {"os.date()"},
+      -- },
+      winbar = {
+        -- TODO: include path
+        lualine_a = {'filename'},
+      },
+        -- TODO: include path
+      inactive_winbar = {
+        lualine_a = {'filename'},
+      },
     },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 
   {
@@ -525,10 +553,12 @@ require('which-key').register({
       n = { "<cmd>let @+ = expand('%:t')<cr>", "[Y]ank [F]ile [N]ame" },
     },
   },
-  ["-"] = { "<cmd>Oil --float %:p:h<cr>", "Open current directory" },
+  -- ["-"] = { "<cmd>Oil --float %:p:h<cr>", "Open current directory" },
+  ["-"] = { "<cmd>Oil --float<cr>", "Open parent directory" },
   ['<leader>n'] = {
     name = '+Neorg',
-    i = { '<cmd>Neorg index<CR>', '[N]eorg [I]ndex' }
+    i = { '<cmd>Neorg index<CR>', 'Workspace [I]ndex' },
+    J = { '<cmd>Neorg journal today<CR>', '[J]ournal today' }
   },
 })
 -- register which-key VISUAL mode
