@@ -525,6 +525,8 @@ vim.keymap.set('n', '<leader><CR>', vim.cmd.noh, { silent = true })
 vim.keymap.set('n', '<leader>l', '$', { silent = true })
 vim.keymap.set('v', '<leader>l', '$h', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>h', '^', { silent = true })
+vim.keymap.set('i', '<C-e>', '<Esc>$a', { silent = true })
+vim.keymap.set('i', '<C-a>', '<Esc>^i', { silent = true })
 
 require('which-key').register({
   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
