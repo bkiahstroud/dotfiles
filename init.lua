@@ -399,6 +399,9 @@ require('lazy').setup({
             -- config = { strategy = 'by_path' }
           },
           ['core.export'] = {},
+          ['core.esupports.metagen'] = {
+            config = { type = 'auto', },
+          },
           ['core.keybinds'] = {
             config = {
               hook = function(keybinds)
@@ -508,18 +511,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
-})
-
-local neorg_group = vim.api.nvim_create_augroup('NeorgGroup', { clear = true })
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-  callback = function()
-    if vim.fn.getline(1) ~= "@document.meta" then
-      vim.cmd('Neorg inject-metadata')
-      print('Auto-injected metadata')
-    end
-  end,
-  group = neorg_group,
-  pattern = '*.norg',
 })
 
 -- [[ Custom Keymaps ]]
