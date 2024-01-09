@@ -510,6 +510,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+local neorg_group = vim.api.nvim_create_augroup('NeorgGroup', { clear = true })
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+  callback = function()
+    if vim.fn.getline(1) ~= "@document.meta" then
+      vim.cmd('Neorg inject-metadata')
+      print('Auto-injected metadata')
+    end
+  end,
+  group = neorg_group,
+  pattern = '*.norg',
+})
+
 -- [[ Custom Keymaps ]]
 
 vim.keymap.set({ 'v', 'i' }, 'jk', '<Esc>', { silent = true })
