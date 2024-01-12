@@ -168,7 +168,7 @@ require('lazy').setup({
             gs.next_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true, desc = 'Jump to next hunk' })
+        end, { expr = true, desc = 'Next [h]unk' })
 
         map({ 'n', 'v' }, '[h', function()
           if vim.wo.diff then
@@ -178,37 +178,37 @@ require('lazy').setup({
             gs.prev_hunk()
           end)
           return '<Ignore>'
-        end, { expr = true, desc = 'Jump to previous hunk' })
+        end, { expr = true, desc = 'Previous [h]unk' })
 
         -- Actions
         -- visual mode
         map('v', '<leader>Hs', function()
           gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'stage git hunk' })
+        end, { desc = '[s]tage hunk' })
         map('v', '<leader>Hr', function()
           gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-        end, { desc = 'reset git hunk' })
+        end, { desc = '[r]eset hunk' })
         -- normal mode
-        map('n', '<leader>Hs', gs.stage_hunk, { desc = 'git stage hunk' })
-        map('n', '<leader>Hr', gs.reset_hunk, { desc = 'git reset hunk' })
-        map('n', '<leader>HS', gs.stage_buffer, { desc = 'git Stage buffer' })
-        map('n', '<leader>Hu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
-        map('n', '<leader>HR', gs.reset_buffer, { desc = 'git Reset buffer' })
-        map('n', '<leader>Hp', gs.preview_hunk, { desc = 'preview git hunk' })
+        map('n', '<leader>Hs', gs.stage_hunk, { desc = '[s]tage hunk' })
+        map('n', '<leader>Hr', gs.reset_hunk, { desc = '[r]eset hunk' })
+        map('n', '<leader>HS', gs.stage_buffer, { desc = '[S]tage buffer' })
+        map('n', '<leader>Hu', gs.undo_stage_hunk, { desc = '[u]ndo stage hunk' })
+        map('n', '<leader>HR', gs.reset_buffer, { desc = '[R]eset buffer' })
+        map('n', '<leader>Hp', gs.preview_hunk, { desc = '[p]review hunk' })
         map('n', '<leader>Hb', function()
           gs.blame_line { full = false }
-        end, { desc = 'git blame line' })
-        map('n', '<leader>Hd', gs.diffthis, { desc = 'git diff against index' })
+        end, { desc = '[b]lame line' })
+        map('n', '<leader>Hd', gs.diffthis, { desc = '[d]iff against index' })
         map('n', '<leader>HD', function()
           gs.diffthis '~'
-        end, { desc = 'git diff against last commit' })
+        end, { desc = '[D]iff against last commit' })
 
         -- Toggles
-        map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle git blame line' })
-        map('n', '<leader>td', gs.toggle_deleted, { desc = 'toggle git show deleted' })
+        map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'toggle [b]lame line' })
+        map('n', '<leader>td', gs.toggle_deleted, { desc = 'toggle show [d]eleted' })
 
         -- Text object
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select hunk' })
       end,
     },
   },
@@ -515,54 +515,54 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Custom Keymaps ]]
 
-vim.keymap.set({ 'v', 'i' }, 'jk', '<Esc>', { silent = true })
-vim.keymap.set({ 'v', 'i' }, 'Jk', '<Esc>', { silent = true })
-vim.keymap.set({ 'v', 'i' }, 'jK', '<Esc>', { silent = true })
-vim.keymap.set({ 'v', 'i' }, 'JK', '<Esc>', { silent = true })
-vim.keymap.set('n', 'J', '}', { silent = true })
-vim.keymap.set('n', 'K', '{', { silent = true })
-vim.keymap.set('n', '<leader><CR>', vim.cmd.noh, { silent = true })
-vim.keymap.set('n', '<leader>l', '$', { silent = true })
-vim.keymap.set('v', '<leader>l', '$h', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<leader>h', '^', { silent = true })
-vim.keymap.set('i', '<C-e>', '<Esc>$a', { silent = true })
-vim.keymap.set('i', '<C-a>', '<Esc>^i', { silent = true })
+vim.keymap.set({ 'v', 'i' }, 'jk', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'Jk', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'jK', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'JK', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('n', 'J', '}', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('n', 'K', '{', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('n', '<leader><CR>', vim.cmd.noh, { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('n', '<leader>l', '$', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('v', '<leader>l', '$h', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'n', 'v' }, '<leader>h', '^', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('i', '<C-e>', '<Esc>$a', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('i', '<C-a>', '<Esc>^i', { silent = true, desc = 'which_key_ignore' })
 
 require('which-key').register({
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },
+  ['<leader>d'] = { name = '[d]ocumentation', _ = 'which_key_ignore' },
+  ['<leader>H'] = { name = 'git [H]unk', _ = 'which_key_ignore' },
+  ['<leader>r'] = { name = '[r]ename', _ = 'which_key_ignore' },
+  ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
+  ['<leader>t'] = { name = '[t]oggle', _ = 'which_key_ignore' },
+  ['<leader>w'] = { name = '[w]orkspace', _ = 'which_key_ignore' },
   ["<leader>b"] = {
     name = "+buffer",
-    d = { vim.cmd.bdelete, "[B]uffer [D]elete" },
-    n = { vim.cmd.bnext, "[B]uffer [N]ext" },
-    p = { vim.cmd.bprevious, "[B]uffer [P]revious" },
+    d = { vim.cmd.bdelete, "[b]uffer [d]elete" },
+    n = { vim.cmd.bnext, "[b]uffer [n]ext" },
+    p = { vim.cmd.bprevious, "[b]uffer [p]revious" },
   },
   ["<leader>g"] = {
-    name = "+Git",
-    b = { '<cmd>Git blame<cr>', "[G]it [B]lame" },
-    d = { '<cmd>Git diff<cr>', "[G]it [D]iff" },
-    a = { '<cmd>Git add -p<cr>', "[G]it [A]dd (patch)" },
-    s = { '<cmd>Git status<cr>', "[G]it [S]tatus" },
-    c = { '<cmd>Git commit<cr>', "[G]it [C]ommit" },
+    name = "+git",
+    b = { '<cmd>git blame<cr>', "[g]it [b]lame" },
+    d = { '<cmd>git diff<cr>', "[g]it [d]iff" },
+    a = { '<cmd>git add -p<cr>', "[g]it [a]dd (patch)" },
+    s = { '<cmd>git status<cr>', "[g]it [s]tatus" },
+    c = { '<cmd>git commit<cr>', "[g]it [c]ommit" },
     -- f = { require('telescope.builtin').git_files, 'Search [G]it [F]iles' },
   },
   ["y"] = {
     f = {
       name = '+file',
-      p = { "<cmd>let @+ = expand('%')<cr>", "[Y]ank [F]ile [P]ath" },
-      n = { "<cmd>let @+ = expand('%:t')<cr>", "[Y]ank [F]ile [N]ame" },
+      p = { "<cmd>let @+ = expand('%')<cr>", "[y]ank [f]ile [p]ath" },
+      n = { "<cmd>let @+ = expand('%:t')<cr>", "[y]ank [f]ile [n]ame" },
     },
   },
   -- ["-"] = { "<cmd>Oil --float %:p:h<cr>", "Open current directory" },
   ["-"] = { "<cmd>Oil --float<cr>", "Open parent directory" },
   ['<leader>n'] = {
-    name = '+Neorg',
-    i = { '<cmd>Neorg index<CR>', 'Workspace [I]ndex' },
+    name = '+[n]eorg',
+    i = { '<cmd>Neorg index<CR>', 'Workspace [i]ndex' },
     J = { '<cmd>Neorg journal today<CR>', '[J]ournal today' }
   },
 })
@@ -570,7 +570,7 @@ require('which-key').register({
 -- required for visual <leader>hs (hunk stage) to work
 require('which-key').register({
   ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>H'] = { 'Git [H]unk' },
+  ['<leader>H'] = { 'git [H]unk' },
 }, { mode = 'v' })
 
 -- [[ Harpoon Keymaps ]]
@@ -578,8 +578,8 @@ require('which-key').register({
 local harpoon = require('harpoon')
 harpoon:setup({}) -- required
 
-vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end)
-vim.keymap.set('n', '<leader>m', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end, { desc = 'Harpoon: [a]dd' })
+vim.keymap.set('n', '<leader>m', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Harpoon: [m]enu' })
 
 vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
 vim.keymap.set('n', '<C-j>', function() harpoon:list():select(2) end)
@@ -647,9 +647,10 @@ pcall(require('telescope').load_extension, 'fzf')
 require('telescope').load_extension('refactoring')
 
 vim.keymap.set(
-	{ 'n', 'x', 'v' },
-	'<leader>rr',
-	function() require('telescope').extensions.refactoring.refactors() end
+  { 'n', 'x', 'v' },
+  '<leader>rr',
+  function() require('telescope').extensions.refactoring.refactors() end,
+  { desc = '[r]efactor' }
 )
 
 -- Load harpoon Telescope extension
@@ -677,7 +678,7 @@ vim.keymap.set(
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch open [B]uffers' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[s]earch open [b]uffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -692,15 +693,15 @@ local function telescope_live_grep_open_files()
     prompt_title = 'Live Grep in Open Files',
   }
 end
-vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
-vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[s]earch [/] in open files' })
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[s]earch [s]elect telescope' })
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'search [g]it [f]iles' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[s]earch [f]iles' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[s]earch [h]elp' })
+vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[s]earch current [w]ord' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[s]earch by [g]rep' })
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[s]earch [d]iagnostics' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[s]earch [r]esume' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -788,8 +789,8 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [d]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [d]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
@@ -810,28 +811,28 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap('gd', vim.lsp.buf.definition, '[g]oto [d]efinition')
+  nmap('gr', require('telescope.builtin').lsp_references, '[g]oto [r]eferences')
+  nmap('gI', require('telescope.builtin').lsp_implementations, '[g]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
+  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
 
   -- See `:help K` for why this keymap
   -- nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<leader>dh', vim.lsp.buf.hover, '[D]ocumentation [H]over')
-  nmap('<leader>ds', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>dh', vim.lsp.buf.hover, 'Documentation [h]over')
+  nmap('<leader>ds', vim.lsp.buf.signature_help, '[s]ignature documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[w]orkspace [a]dd folder')
+  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[w]orkspace [r]emove folder')
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, '[w]orkspace [l]ist folders')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
