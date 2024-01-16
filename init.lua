@@ -237,7 +237,7 @@ require('lazy').setup({
         custom_highlights = function(colors)
           return {
 		        Search = { bg = colors.yellow, fg = colors.mantle }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-		        IncSearch = { bg = colors.yellow, fg = colors.mantle }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		        IncSearch = { bg = colors.peach, fg = colors.mantle }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		        CurSearch = { bg = colors.peach, fg = colors.mantle }, -- 'cursearch' highlighting: highlights the current search you're on differently
           }
         end,
@@ -261,8 +261,6 @@ require('lazy').setup({
       options = {
         icons_enabled = true,
         theme = 'catppuccin-mocha',
-        component_separators = '|',
-        section_separators = '',
       },
       sections = {
         lualine_x = {'fileformat', 'filetype'},
@@ -695,7 +693,7 @@ local function telescope_live_grep_open_files()
 end
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[s]earch [/] in open files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[s]earch [s]elect telescope' })
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'search [g]it [f]iles' })
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'search git [f]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[s]earch [f]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[s]earch [h]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[s]earch current [w]ord' })
@@ -876,8 +874,13 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      diagnostics = { disable = { 'missing-fields' } },
+      --[[
+      NOTE:
+      Ignores Lua_LS's noisy `missing-fields` warnings.
+      Also ignores the multitude of `undefined gloabal "vim"` that started happening
+      after moving this file and symlinking it to this directory.
+      --]]
+      diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
   rubocop = {
