@@ -544,11 +544,11 @@ require('which-key').register({
   },
   ["<leader>g"] = {
     name = "+git",
-    b = { '<cmd>git blame<cr>', "[g]it [b]lame" },
-    d = { '<cmd>git diff<cr>', "[g]it [d]iff" },
-    a = { '<cmd>git add -p<cr>', "[g]it [a]dd (patch)" },
-    s = { '<cmd>git status<cr>', "[g]it [s]tatus" },
-    c = { '<cmd>git commit<cr>', "[g]it [c]ommit" },
+    b = { '<cmd>Git blame<cr>', "[b]lame" },
+    d = { '<cmd>Git diff<cr>', "[d]iff" },
+    a = { '<cmd>Git add -p<cr>', "[a]dd (patch)" },
+    s = { '<cmd>Git status<cr>', "[s]tatus" },
+    c = { '<cmd>Git commit<cr>', "[c]ommit" },
     -- f = { require('telescope.builtin').git_files, 'Search [G]it [F]iles' },
   },
   ["y"] = {
