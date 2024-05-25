@@ -106,6 +106,7 @@ require('lazy').setup({
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -324,6 +325,9 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- TODO: remove
+  { 'nvim-treesitter/playground' },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -431,6 +435,31 @@ require('lazy').setup({
     -- Optional dependencies
     dependencies = { 'tpope/vim-repeat' },
   },
+
+  { 'andersevenrud/nvim_context_vt', opts = { prefix = '', min_rows = 4 } },
+
+  {
+    '2kabhishek/co-author.nvim',
+    dependencies = {
+      'stevearc/dressing.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    cmd = { 'CoAuthor' },
+  },
+
+  {
+    'nvim-tree/nvim-web-devicons',
+    opts = {
+      override_by_filename = {
+        ["gemfile"] = {
+          icon = "",
+          color = "#701516",
+          cterm_color = "52",
+          name = "Gemfile"
+        }
+      }
+    }
+  }
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -545,8 +574,8 @@ require('which-key').register({
     b = { '<cmd>Git blame<cr>', "[b]lame" },
     d = { '<cmd>Git diff<cr>', "[d]iff" },
     a = { '<cmd>Git add -p<cr>', "[a]dd (patch)" },
-    s = { '<cmd>Git status<cr>', "[s]tatus" },
-    c = { '<cmd>Git commit<cr>', "[c]ommit" },
+    -- s = { '<cmd>Git status<cr>', "[s]tatus" },
+    -- c = { '<cmd>Git commit<cr>', "[c]ommit" },
     -- f = { require('telescope.builtin').git_files, 'Search [G]it [F]iles' },
   },
   ["y"] = {
@@ -559,9 +588,20 @@ require('which-key').register({
   -- ["-"] = { "<cmd>Oil --float %:p:h<cr>", "Open current directory" },
   ["-"] = { "<cmd>Oil --float<cr>", "Open parent directory" },
   ['<leader>n'] = {
-    name = '+[n]eorg',
+    name = '+neorg',
     i = { '<cmd>Neorg index<CR>', 'Workspace [i]ndex' },
-    J = { '<cmd>Neorg journal today<CR>', '[J]ournal today' }
+    -- j = {
+    --   name = '+journal',
+      -- t = { '<cmd>Neorg journal today<CR>', '[t]oday' },
+    --   T = { '<cmd>Neorg journal tomorrow<CR>', '[T]omorrow' },
+    --   y = { '<cmd>Neorg journal yesterday<CR>', '[y]esterday' },
+    -- },
+  },
+  ['<leader>j'] = {
+    name = '+journal',
+    t = { '<cmd>Neorg journal today<CR>', '[t]oday' },
+    T = { '<cmd>Neorg journal tomorrow<CR>', '[T]omorrow' },
+    y = { '<cmd>Neorg journal yesterday<CR>', '[y]esterday' },
   },
 })
 -- register which-key VISUAL mode
@@ -694,6 +734,8 @@ end
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[s]earch [/] in open files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[s]earch [s]elect telescope' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'search git [f]iles' })
+vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = 'search git [s]tatus' })
+vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits, { desc = 'search git [c]ommits' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[s]earch [f]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[s]earch [h]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[s]earch current [w]ord' })
@@ -706,17 +748,30 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
-    'ruby',
-    'lua',
-    'javascript',
-    'go',
-    'html',
-    'yaml',
-    'xml',
-    'markdown',
     'bash',
+    'comment',
+    'css',
+    'dockerfile',
+    'go',
+    'gomod',
+    'html',
+    'javascript',
+    'kdl',
+    'markdown',
+    'markdown_inline',
+    'norg',
+    'regex',
+    'ruby',
+    'sql',
+    'templ',
+    'xml',
+    'yaml',
+    -- The 5 below should always be installed
+    'c',
+    'lua',
     'vimdoc',
-    'vim'
+    'vim',
+    'query',
   },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -775,12 +830,12 @@ require('nvim-treesitter.configs').setup {
       },
     },
     swap = {
-      enable = false,
+      enable = true,
       swap_next = {
-        ['<leader>a'] = '@parameter.inner',
+        ['<leader>p'] = '@parameter.inner',
       },
       swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
+        ['<leader>P'] = '@parameter.inner',
       },
     },
   },
@@ -843,16 +898,16 @@ end
 require('mason').setup()
 require('mason-lspconfig').setup()
 
-local rubocop_cmd = function()
-  local dc_file = io.open('docker-compose.yml', 'r')
-  if dc_file ~= nil then
-    io.close(dc_file)
-    return 'docker compose exec web bundle exec rubocop -c .rubocop.yml --lsp'
-  else
-    -- return os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop --lsp", 'stdio'
-    return os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop --lsp"
-  end
-end
+-- local rubocop_cmd = function()
+--   local dc_file = io.open('docker-compose.yml', 'r')
+--   if dc_file ~= nil then
+--     io.close(dc_file)
+--     return 'docker compose exec web bundle exec rubocop -c .rubocop.yml --lsp'
+--   else
+--     -- return os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop --lsp", 'stdio'
+--     return os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop --lsp"
+--   end
+-- end
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -865,7 +920,20 @@ end
 -- local lspconfig = require('lspconfig')
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {
+    gopls = {
+      gofumpt = true,
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedvariable = true,
+      },
+      hints = {
+        assignVariableTypes = true,
+        functionTypeParameters = true,
+      }
+    },
+  },
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -883,10 +951,20 @@ local servers = {
       diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
-  rubocop = {
-    cmd = { rubocop_cmd() }
-  },
+  -- rubocop = {
+  --   cmd = { rubocop_cmd() }
+  -- },
   -- go = {},
+
+  dockerls = {},
+
+  docker_compose_language_service = {
+    telemetry = {
+      enableTelemetry = false
+    }
+  },
+
+  htmx = {},
 
   -- solargraph = {
   --   cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph", 'stdio' },
@@ -927,9 +1005,19 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
-      cmd = servers[server_name].cmd
+      -- cmd = servers[server_name].cmd
     }
   end
+}
+
+-- ruby lsps and mason don't play nice together
+require 'lspconfig'.ruby_ls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = { formatter = true },
+}
+require 'lspconfig'.rubocop.setup {
+  on_attach = function() end,
 }
 
 -- require('lspconfig').rubocop.setup {
@@ -960,7 +1048,8 @@ cmp.setup {
     end,
   },
   completion = {
-    completeopt = 'menu,menuone,noinsert'
+    completeopt = 'menu,menuone,noinsert',
+    -- autocomplete = { 'TextChangedI' }
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -995,8 +1084,23 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+    { name = 'buffer' },
   },
 }
+
+-- NOTE: this is a test
+-- TODO: fix foreground colors of treesitter comment highlights
+-- WARN: test
+-- FIXME: hi
+-- TODO: recolor `@neorg.markup.verbatim` && `@neorg.markup.verbatim.delimiter` (Neorg inline code)
+-- vim.cmd('highlight @text.note guibg=Black guifg=Black')
+-- vim.api.nvim_create_autocmd({ "FileType", "ColorScheme" }, {
+--   pattern = "*", -- Match all colorschemes
+--   callback = function()
+--     vim.cmd('highlight @text.note guibg=Red guifg=Black')
+--     vim.cmd('highlight @text.todo guibg=White guifg=Red')
+--   end,
+-- })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

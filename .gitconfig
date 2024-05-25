@@ -21,6 +21,8 @@
   undo = reset --soft HEAD^
   stashall = stash --include-untracked
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[branch]
+  sort = -committerdate
 [status]
   showUntrackedFiles = all
 [commit]

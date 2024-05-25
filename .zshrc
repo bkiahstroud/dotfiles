@@ -166,7 +166,6 @@ alias cat='bat'
 alias ls='exa'
 
 # Lazy
-alias t='task'
 alias osm='opensaysme'
 
 # Copy markdown of commit message(s) for MR/PR descriptions
@@ -178,13 +177,18 @@ alias t='task'
 alias ta='task add'
 alias ts='task sync'
 alias tu='task rc.context=none'
+alias tt='taskwarrior-tui'
+
+alias k='kubectl'
 
 alias v='nvim'
 
-alias z='zellij'
+alias z='zellij -l welcome'
 
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
+
+alias gpg='gpg2'
 
 # Accept suggestion from zsh-autosuggestions plugin
 bindkey '^n' autosuggest-accept
@@ -210,7 +214,7 @@ export CDPATH=".:/Users/kiah/Development:/Users/kiah/Development/personal:/Users
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # Use robbyrussell's zsh theme
-source $ZSH_CUSTOM/themes/powerlevel10k/config/p10k-robbyrussell.zsh
+# source $ZSH_CUSTOM/themes/powerlevel10k/config/p10k-robbyrussell.zsh
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
