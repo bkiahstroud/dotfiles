@@ -7,8 +7,22 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Clear search highlight on pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader><CR>', vim.cmd.noh, { silent = true, desc = 'which_key_ignore' })
+
+vim.keymap.set({ 'v', 'i' }, 'jk', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'Jk', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'jK', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set({ 'v', 'i' }, 'JK', '<Esc>', { silent = true, desc = 'which_key_ignore' })
+
+vim.keymap.set('n', 'J', '}', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('n', 'K', '{', { silent = true, desc = 'which_key_ignore' })
+
+-- vim.keymap.set('n', '<leader>l', '$', { silent = true, desc = 'which_key_ignore' })
+-- vim.keymap.set('v', '<leader>l', '$h', { silent = true, desc = 'which_key_ignore' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>h', '^', { silent = true, desc = 'which_key_ignore' })
+
+vim.keymap.set('i', '<C-e>', '<Esc>$a', { silent = true, desc = 'which_key_ignore' })
+vim.keymap.set('i', '<C-a>', '<Esc>^i', { silent = true, desc = 'which_key_ignore' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
