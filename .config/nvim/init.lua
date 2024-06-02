@@ -154,6 +154,16 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Use spaces instead of tabs
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 0
+vim.o.expandtab = true
+vim.o.smarttab = true
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
