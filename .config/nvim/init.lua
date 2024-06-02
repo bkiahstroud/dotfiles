@@ -896,6 +896,58 @@ require("lazy").setup({
 	--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
 	--    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
 	-- { import = 'custom.plugins' },
+	--
+	-- Plugins to consider:
+	-- Comment.nvim
+	-- LuaSnip
+	-- catppuccin
+	-- cmp-buffer
+	-- cmp-nvim-lsp
+	-- cmp-path
+	-- cmp_luasnip
+	-- co-author.nvim
+	-- conform.nvim
+	-- dressing.nvim
+	-- fidget.nvim
+	-- friendly-snippets
+	-- gitsigns.nvim
+	-- harpoon
+	-- indent-blankline.nvim
+	-- lazy.nvim
+	-- leap.nvim
+	-- lualine.nvim
+	-- mason-lspconfig.nvim
+	-- mason-tool-installer.nvim
+	-- mason.nvim
+	-- mini.nvim
+	-- neodev.nvim
+	-- neorg
+	-- nvim-cmp
+	-- nvim-lspconfig
+	-- nvim-surround
+	-- nvim-treesitter
+	-- nvim-treesitter-context
+	-- nvim-treesitter-textobjects
+	-- nvim-web-devicons
+	-- nvim_context_vt
+	-- oil.nvim
+	-- onedark.nvim
+	-- playground
+	-- plenary.nvim
+	-- rainbow-delimiters.nvim
+	-- refactoring.nvim
+	-- telescope-fzf-native.nvim
+	-- telescope-fzf-native.nvim
+	-- telescope-ui-select.nvim
+	-- telescope.nvim
+	-- todo-comments.nvim
+	-- tokyonight.nvim
+	-- vim-fugitive
+	-- vim-repeat
+	-- vim-rhubarb
+	-- vim-sleuth
+	-- vimwiki
+	-- which-key.nvim
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -920,4 +972,3 @@ require("lazy").setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
