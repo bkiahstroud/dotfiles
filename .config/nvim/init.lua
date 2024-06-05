@@ -564,6 +564,18 @@ require('lazy').setup({
             },
           },
         },
+
+        yamlls = {},
+
+        helm_ls = {
+          settings = {
+            ['helm-ls'] = {
+              yamlls = {
+                path = 'yaml-language-server',
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -840,6 +852,9 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  -- towolf/vim-helm provides basic syntax highlighting and filetype detection
+  -- ft = 'helm' is important to not start yamlls
+  { 'towolf/vim-helm', ft = 'helm' },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
