@@ -27,6 +27,12 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup({
+  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/plugins/*.lua`
+  --    This is the easiest way to modularize your config.
+  --
+  --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+  { import = 'plugins' },
+
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -43,13 +49,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/plugins/*.lua`
-  --    This is the easiest way to modularize your config.
-  --
-  --  For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'plugins' },
-  --
-  -- Plugins to consider:
+  -- TODO: Plugins to consider:
   -- Comment.nvim
   -- LuaSnip
   -- catppuccin
