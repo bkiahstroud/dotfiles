@@ -8,6 +8,7 @@ return {
     local harpoon = require 'harpoon'
     harpoon:setup() -- required
 
+    -- NOTE: use telescope for harpoon menu
     -- local conf = require('telescope.config').values
     -- local function toggle_telescope(harpoon_files)
     --   local file_paths = {}
