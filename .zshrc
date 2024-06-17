@@ -156,6 +156,10 @@ alias gpo='git push -u origin $(git_current_branch)'
 # Non-plugin equivalent: 'git pull && git fetch -ap'
 alias glaf='gl && gfa'
 
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gsts='git stash show -p'
+
 # Update ohmyzsh and brew
 alias upgrade='omz update && brew update && brew upgrade'
 

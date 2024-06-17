@@ -163,6 +163,9 @@ return {
         },
       },
 
+      ruby_lsp = {},
+      rubocop = {},
+
       dockerls = {},
 
       docker_compose_language_service = {

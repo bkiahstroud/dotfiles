@@ -1,6 +1,7 @@
 -- Autoformat
 return {
   'stevearc/conform.nvim',
+  version = '5.9.x',
   lazy = false,
   keys = {
     {
