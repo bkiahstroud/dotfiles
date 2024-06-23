@@ -35,6 +35,7 @@ return {
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-buffer',
   },
   config = function()
     -- See `:help cmp`
@@ -64,10 +65,10 @@ return {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
-        -- Accept ([y]es) the completion.
+        -- Accept the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<C-Space>'] = cmp.mapping.confirm { select = true },
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
@@ -78,7 +79,7 @@ return {
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
-        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<C-c>'] = cmp.mapping.complete {},
 
         -- Think of <Tab> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
@@ -88,14 +89,18 @@ return {
         --
         -- <Tab> will move you to the right of each of the expansion locations.
         -- <S-Tab> is similar, except moving you backwards.
-        ['<Tab>'] = cmp.mapping(function()
+        ['<Tab>'] = cmp.mapping(function(fallback)
           if luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
+          else
+            fallback()
           end
         end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function()
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
           if luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
+          else
+            fallback()
           end
         end, { 'i', 's' }),
 
