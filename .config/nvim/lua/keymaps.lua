@@ -48,3 +48,18 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 --
 vim.keymap.set('n', '-', '<cmd>Oil --float<cr>', { desc = 'Open parent directory' })
+
+local getReletiveFilePath = function()
+  local homePath = os.getenv 'HOME'
+  local fullPath = vim.fn.expand '%'
+  -- Will match $HOME/Development/my-project/
+  local basePath = homePath .. '/Development/' .. '[^/]+/'
+  local relativePath = fullPath:gsub(basePath, '')
+
+  vim.fn.setreg('+', relativePath)
+  print('Copied ' .. relativePath)
+end
+
+-- vim.keymap.set('n', 'yfp', "<cmd>let @+ = expand('%')<cr>", { desc = '[y]ank [f]ile [p]ath' })
+vim.keymap.set('n', 'yfp', getReletiveFilePath, { desc = '[y]ank [f]ile [p]ath' })
+vim.keymap.set('n', 'yfn', "<cmd>let @+ = expand('%:t')<cr>", { desc = '[y]ank [f]ile [n]ame' })
