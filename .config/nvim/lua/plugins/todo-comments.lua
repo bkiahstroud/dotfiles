@@ -7,6 +7,7 @@ return {
     signs = true, -- show icons in gutter
     sign_priority = 0, -- don't overlay gitsigns
     keywords = {
+      -- TODO: make color pink
       OVERRIDE = { icon = '󰬲 ', color = 'hint', alt = { 'OVERRIDE FILE' } },
     },
   },

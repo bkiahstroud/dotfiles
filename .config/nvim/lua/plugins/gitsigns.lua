@@ -12,6 +12,10 @@ return {
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
+      -- Toggle on by default
+      -- FIXME: sometimes doesn't follow cursor
+      -- gitsigns.toggle_current_line_blame()
+
       local function map(mode, l, r, opts)
         opts = opts or {}
         opts.buffer = bufnr
