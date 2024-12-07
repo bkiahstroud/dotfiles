@@ -1,0 +1,157 @@
+// https://github.com/zellij-org/zellij/blob/ed8ca9383e0530d6b6d54d6b778046690e6d826d/zellij-utils/assets/themes/catppuccin.kdl
+
+themes {
+  catppuccin-macchiato {
+    bg "#5b6078" // Surface2
+    fg "#cad3f5"
+    red "#ed8796"
+    green "#a6da95"
+    blue "#8aadf4"
+    yellow "#eed49f"
+    magenta "#f5bde6" // Pink
+    orange "#f5a97f" // Peach
+    cyan "#91d7e3" // Sky
+    black "#1e2030" // Mantle
+    white "#cad3f5"
+  }
+
+  catppuccin-mocha {
+    bg "#585b70" // Surface2
+    fg "#cdd6f4"
+    red "#f38ba8"
+    green "#a6e3a1"
+    blue "#89b4fa"
+    yellow "#f9e2af"
+    magenta "#f5c2e7" // Pink
+    orange "#fab387" // Peach
+    cyan "#89dceb" // Sky
+    black "#181825" // Mantle
+    white "#cdd6f4"
+  }
+
+  tokyo-night-storm {
+    fg 169 177 214
+    bg 36 40 59
+    black 56 62 90
+    red 249 51 87
+    green 158 206 106
+    yellow 224 175 104
+    blue 122 162 247
+    magenta 187 154 247
+    cyan 42 195 222
+    white 192 202 245
+    orange 255 158 100
+  }
+
+  tokyo-night-dark {
+    fg 169 177 214
+    bg 26 27 38
+    black 56 62 90
+    red 249 51 87
+    green 158 206 106
+    yellow 224 175 104
+    blue 122 162 247
+    magenta 187 154 247
+    cyan 42 195 222
+    white 192 202 245
+    orange 255 158 100
+  }
+
+  nord {
+    fg 216 222 233 // #D8DEE9
+    bg 46 52 64 // #2E3440
+    black 59 66 82 // #3B4252
+    red 191 97 106 // #BF616A
+    green 163 190 140 // #A3BE8C
+    yellow 235 203 139 // #EBCB8B
+    blue 129 161 193 // #81A1C1
+    magenta 180 142 173 // #B48EAD
+    cyan 136 192 208 // #88C0D0
+    white 229 233 240 // #E5E9F0
+    orange 208 135 112 // #D08770
+  }
+
+  kanagawa {
+    fg "#DCD7BA"
+    bg "#1F1F28"
+    red "#C34043"
+    green "#76946A"
+    yellow "#FF9E3B"
+    blue "#7E9CD8"
+    magenta "#957FB8"
+    orange "#FFA066"
+    cyan "#7FB4CA"
+    black "#16161D"
+    white "#DCD7BA"
+  }
+
+  cyber-noir {
+    bg "#0b0e1a" // Dark Blue
+    fg "#91f3e4" // Teal
+    red "#ff578d" // Hot Pink
+    green "#00ff00" // Neon Green
+    blue "#3377ff" // Electric Blue
+    yellow "#ffd700" // Cyber Yellow
+    magenta "#ff00ff" // Neon Purple
+    orange "#ff7f50" // Cyber Orange
+    cyan "#00e5e5" // Cyan
+    black "#000000" // Black
+    white "#91f3e4" // Teal
+  }
+
+  blade-runner {
+    bg "#1a1a1a" // Dark Gray
+    fg "#2bbff4" // Neon Blue
+    red "#ff355e" // Neon Pink
+    green "#00ff00" // Neon Green
+    blue "#00d9e3" // Electric Blue
+    yellow "#ffe600" // Neon Yellow
+    magenta "#ff00ff" // Neon Purple
+    orange "#ff8c0d" // Cyber Orange
+    cyan "#00e5e5" // Cyan
+    black "#000000" // Black
+    white "#ffffff" // White
+  }
+
+  retro-wave {
+    bg "#1a1a1a" // Dark Gray
+    fg "#ff9900" // Retro Orange
+    red "#ff355e" // Neon Pink
+    green "#00ff00" // Neon Green
+    blue "#00d9e3" // Electric Blue
+    yellow "#ffe600" // Neon Yellow
+    magenta "#ff00ff" // Neon Purple
+    orange "#ff6611" // Retro Red
+    cyan "#00e5e5" // Cyan
+    black "#000000" // Black
+    white "#ffffff" // White
+  }
+
+  everforest-dark {
+    bg "#2b3339"
+    fg "#d3c6aa"
+    black "#4b565c"
+    red "#e67e80"
+    green "#a7c080"
+    yellow "#dbbc7f"
+    blue "#7fbbb3"
+    magenta "#d699b6"
+    cyan "#83c092"
+    white "#d3c6aa"
+    orange "#FF9E64"
+  }
+
+  menace {
+    fg "#e3a555"
+    bg 40 42 54
+    red "#f74c17"
+    green 80 250 123
+    yellow 241 250 140
+    blue 98 114 164
+    magenta 255 121 198
+    orange 255 184 108
+    cyan 139 233 253
+    black "#04399d"
+    white 255 255 255
+  }
+}
