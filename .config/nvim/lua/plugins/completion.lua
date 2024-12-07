@@ -90,7 +90,9 @@ return {
         -- <Tab> will move you to the right of each of the expansion locations.
         -- <S-Tab> is similar, except moving you backwards.
         ['<Tab>'] = cmp.mapping(function(fallback)
-          if luasnip.expand_or_locally_jumpable() then
+          if cmp.visible() then
+            cmp.confirm { select = true }
+          elseif luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
           else
             fallback()
@@ -112,6 +114,7 @@ return {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'buffer' },
+        { name = 'neorg' },
       },
     }
   end,

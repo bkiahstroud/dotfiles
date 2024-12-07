@@ -48,6 +48,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 --
 vim.keymap.set('n', '-', '<cmd>Oil --float<cr>', { desc = 'Open parent directory' })
+vim.keymap.set('n', '<leader>nf', '<cmd>Oil ~/notes --float<cr>', { desc = 'Open Neorg notes' })
 
 local getReletiveFilePath = function()
   local homePath = os.getenv 'HOME'
