@@ -167,7 +167,7 @@ alias upgrade='omz update && brew update && brew upgrade'
 alias cat='bat'
 
 # Prefer using exa over ls
-alias ls='exa'
+alias ls='eza'
 
 # Lazy
 alias osm='opensaysme'
@@ -187,12 +187,16 @@ alias k='kubectl'
 
 alias v='nvim'
 
-alias z='zellij -l welcome'
+# alias z='zellij -l welcome'
+alias z='zellij'
+alias zinit='zellij attach --create-background home; zellij --session home action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/Development",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm; zellij attach home'
 
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
 
 alias gpg='gpg2'
+
+alias clast='fc -ln -1 | pbcopy'
 
 # Accept suggestion from zsh-autosuggestions plugin
 bindkey '^n' autosuggest-accept
@@ -233,3 +237,5 @@ export RIPGREP_CONFIG_PATH="/Users/kiah/dotfiles/.ripgreprc"
 export DOOMDIR="$HOME/.doom.d"
 
 export EDITOR="/opt/homebrew/bin/nvim"
+
+eval "$(atuin init zsh)"

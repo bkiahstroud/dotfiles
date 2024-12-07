@@ -25,5 +25,5 @@
   sort = -committerdate
 [status]
   showUntrackedFiles = all
-[commit]
-	template = /Users/kiah/.gitmessage
+[init]
+  defaultBranch = main
