@@ -11,3 +11,12 @@ ls.add_snippets('ruby', {
     t ')',
   }),
 })
+
+-- ActiveModel::Type::Boolean.new.cast
+ls.add_snippets('ruby', {
+  s('cast boolean', {
+    t "ActiveModel::Type::Boolean.new.cast(ENV.fetch('",
+    i(1, 'MY_VAR'),
+    t "', false))",
+  }),
+})
