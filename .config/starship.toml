@@ -1,0 +1,69 @@
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$status\
+$cmd_duration\
+$memory_usage\
+$kubernetes\
+$helm\
+$golang\
+$lua\
+$python\
+$ruby\
+$time\
+$line_break\
+$character"""
+
+[fill]
+symbol = ' '
+
+[time]
+format = '[$time]($style) '
+time_format = '%a %I:%M:%S%P'
+style = 'bold white'
+disabled = false
+
+[cmd_duration]
+format = '[$duration]($style) '
+min_time = 5_000
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[git_commit]
+style = 'bold yellow'
+
+[git_metrics]
+disabled = false
+
+[git_status]
+style = 'bold yellow'
+stashed = ''
+
+[ruby]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
+[kubernetes]
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+contexts = [
+  { context_pattern = 'r2-besties', context_alias = 'besties' },
+  { context_pattern = 'r2-gbh-ams2', context_alias = 'gbh' },
+  { context_pattern = 'r2-bbf', context_alias = 'bbf' },
+  { context_pattern = 'r2-staging', context_alias = 'staging' },
+  { context_pattern = 'r2-friends', context_alias = 'friends' }
+]
+
+[memory_usage]
+format = '$symbol [${ram}( | ${swap})]($style) '
+symbol = ''
+disabled = false
+
+[status]
+disabled = false
