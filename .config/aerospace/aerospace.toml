@@ -202,6 +202,10 @@ if.app-id = 'com.googlecode.iterm2'
 run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
 if.app-id = 'org.mozilla.firefoxdeveloperedition'
 run = 'move-node-to-workspace B'
 
