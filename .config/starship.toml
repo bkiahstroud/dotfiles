@@ -57,7 +57,8 @@ contexts = [
   { context_pattern = 'r2-gbh-ams2', context_alias = 'gbh' },
   { context_pattern = 'r2-bbf', context_alias = 'bbf' },
   { context_pattern = 'r2-staging', context_alias = 'staging' },
-  { context_pattern = 'r2-friends', context_alias = 'friends' }
+  { context_pattern = 'r2-friends', context_alias = 'friends' },
+  { context_pattern = 'r2-gc', context_alias = 'gc' }
 ]
 
 [memory_usage]
