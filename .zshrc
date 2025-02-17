@@ -44,10 +44,10 @@ export ZSH="/Users/kiah/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -65,12 +65,32 @@ export ZSH="/Users/kiah/.oh-my-zsh"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Speed up auto-completions
+autoload -Uz compinit && compinit -i
+
+zstyle ':omz:plugins:eza' 'icons' yes
+
+# Override default zoxide alias "z" to "cd"
+ZOXIDE_CMD_OVERRIDE=cd
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  colored-man-pages
+  docker
+  docker-compose
+  eza
+  gh
   git
+  gitfast
+  golang
+  kubectl
+  ssh
+  zoxide
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
@@ -119,9 +139,6 @@ alias cdd='cd ~/Development/'
 # Quickly access .vimrc
 alias vimrc='vim ~/.vimrc'
 
-# Lazily get into stack_car bash
-alias scb='sc be bash'
-
 # Lazily get into stack_car rails console
 alias scc='sc console'
 
@@ -133,12 +150,6 @@ alias vimcheats='vim ~/Development/code_cheat_sheet.txt'
 
 # `docker compose` shortcut
 alias dc='docker compose'
-
-# Bash into web container
-alias dcb='docker compose exec web bash'
-
-# Typos
-alias docekr='docker'
 
 # `find` command searches for file name in current directory
 # alias find='find . -name'
@@ -152,9 +163,7 @@ alias gdc='git diff --color-words'
 # Push current branch and set upstream tracking to origin
 alias gpo='git push -u origin $(git_current_branch)'
 
-# Requires ohmyzsh git plugin
-# Non-plugin equivalent: 'git pull && git fetch -ap'
-alias glaf='gl && gfa'
+alias glaf='git pull && git fetch -ap'
 
 alias gst='git stash'
 alias gstp='git stash pop'
@@ -165,9 +174,6 @@ alias upgrade='omz update && brew update && brew upgrade'
 
 # Prefer using bat over cat
 alias cat='bat'
-
-# Prefer using exa over ls
-alias ls='eza'
 
 # Lazy
 alias osm='opensaysme'
