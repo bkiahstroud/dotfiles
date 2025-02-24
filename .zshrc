@@ -9,7 +9,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/kiah/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -216,7 +216,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Path to anywhere from anywhere (prioritizes dev directories)
-export CDPATH=".:/Users/kiah/Development:/Users/kiah/Development/personal:/Users/kiah/"
+export CDPATH=".:$HOME/Development:$HOME/Development/personal:$HOME"
 
 # Defaults for grep
 # Note: for some reason, this causes the vim-gitgitter plugin to stop working
