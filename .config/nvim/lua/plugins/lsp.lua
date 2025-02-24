@@ -163,7 +163,6 @@ return {
         },
       },
 
-      ruby_lsp = {},
       rubocop = {},
 
       dockerls = {},
