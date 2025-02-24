@@ -95,6 +95,8 @@ plugins=(
   zsh-autosuggestions
 )
 
+source <(kubectl stern --completion zsh)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
