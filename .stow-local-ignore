@@ -1,0 +1,6 @@
+\.git
+\.gitignore
+^/README.*
+
+\.config/nvim-custom # For archival purposes only
+\.DS_Store
