@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
       "RRethy/nvim-treesitter-endwise",
     },
     opts = {
@@ -41,12 +40,6 @@ return {
       indent = { enable = true, disable = { "ruby" } },
       endwise = {
         enable = true,
-      },
-      context = {
-        enable = true,
-        max_lines = 10,
-        multiline_threshold = 1,
-        -- trim_scope = 'outer',
       },
     },
   },
