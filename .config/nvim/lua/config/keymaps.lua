@@ -6,7 +6,7 @@ vim.keymap.set({ "v", "i" }, "Jk", "<Esc>")
 vim.keymap.set({ "v", "i" }, "jK", "<Esc>")
 vim.keymap.set({ "v", "i" }, "JK", "<Esc>")
 
-vim.keymap.set("n", "<leader>yfn", "<cmd>let @+ = expand('%:t')<cr>", { desc = "file [n]ame" })
+vim.keymap.set("n", "<leader>yfn", "<cmd>let @+ = expand('%:t')<cr>", { desc = "Name" })
 vim.keymap.set("n", "<leader>yfp", function()
   local homePath = os.getenv("HOME")
   local fullPath = vim.fn.expand("%")
@@ -16,6 +16,12 @@ vim.keymap.set("n", "<leader>yfp", function()
 
   vim.fn.setreg("+", relativePath)
   print("Copied " .. relativePath)
-end, { desc = "file [p]ath" })
+end, { desc = "Path" })
 
-vim.keymap.set("n", "<leader>yr", "<cmd>Xeref<cr>", { desc = "[r]eference" })
+vim.keymap.set("n", "<leader>yr", "<cmd>Xeref<cr>", { desc = "Reference" })
+
+require("which-key").add({
+  { "<leader>o", group = "Obsidian", icon = { icon = "", color = "purple" } },
+  { "<leader>y", group = "yank", icon = { icon = "", color = "azure" } },
+  { "<leader>yf", group = "file" },
+})
