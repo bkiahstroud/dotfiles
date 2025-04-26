@@ -63,8 +63,5 @@ return {
       nvim_cmp = false,
       blink = true,
     },
-    -- picker = {
-    --   name = "fzf-lua",
-    -- },
   },
 }
