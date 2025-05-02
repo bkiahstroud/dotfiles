@@ -217,6 +217,12 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Doom Emacs
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
+# WSL binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+# Go
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
 # Path to anywhere from anywhere (prioritizes dev directories)
 export CDPATH=".:$HOME/Development:$HOME/Development/personal:$HOME"
 
@@ -246,3 +252,10 @@ export EDITOR="/opt/homebrew/bin/nvim"
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+
+# fnm
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
