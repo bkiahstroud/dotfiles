@@ -32,6 +32,24 @@ end, { desc = "Symbols" })
 
 require("which-key").add({
   { "<leader>o", group = "Obsidian", icon = { icon = "", color = "purple" } },
+  { "<leader>t", group = "toggle", icon = { icon = "󰨚", color = "cyan" } },
   { "<leader>y", group = "yank", icon = { icon = "", color = "azure" } },
   { "<leader>yf", group = "file" },
 })
+
+Snacks.toggle
+  .new({
+    id = "auto_format",
+    name = "Auto-format",
+    get = function()
+      return vim.opt_local.formatoptions:get()["a"] or false
+    end,
+    set = function(state)
+      if state then
+        vim.opt_local.formatoptions:append("a")
+      else
+        vim.opt_local.formatoptions:remove("a")
+      end
+    end,
+  })
+  :map("<leader>ta")
