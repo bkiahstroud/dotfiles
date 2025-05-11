@@ -18,7 +18,9 @@ vim.keymap.set("n", "<leader>yfp", function()
   print("Copied " .. relativePath)
 end, { desc = "Path" })
 
-vim.keymap.set("n", "<leader>yr", "<cmd>Xeref<cr>", { desc = "Reference" })
+vim.keymap.set("n", "<leader>yr", function()
+  require("xeref").copy_method_ref()
+end, { desc = "Reference" })
 
 vim.keymap.set("n", "<leader>ss", function()
   -- WARN: includes stopped LSPs, which will cause lsp_symbols() to fail
