@@ -51,13 +51,26 @@ return {
   opts = {
     workspaces = {
       {
-        name = "work",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work",
+        name = "vizer",
+        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work/vizer",
+      },
+      {
+        name = "notch8",
+        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work/notch8",
       },
       {
         name = "personal",
         path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal",
       },
+    },
+    templates = {
+      folder = "templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+    },
+    daily_notes = {
+      template = "daily.md",
+      alias_format = "%B %-d, %Y | %A",
     },
     completion = {
       nvim_cmp = false,

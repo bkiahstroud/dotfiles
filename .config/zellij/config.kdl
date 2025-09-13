@@ -126,8 +126,8 @@ keybinds {
                 floating true
                 move_to_focused_tab true
                 cwd "/Users/kiah"
-                root_dirs "/Users/kiah/Development"
-                session_layout ":compact"
+                root_dirs "/Users/kiah/dev;/Users/kiah/dev/vizer"
+                session_layout "project"
             }; SwitchToMode "Normal";
         }
     }
@@ -276,7 +276,7 @@ pane_frames false
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "tokyo-night-storm"
+theme "tokyo-night-dark"
 
 // The name of the default layout to load on startup
 // Default: "default"

@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-  name = Benjamin Kiah Stroud
-  email = 32469930+bkiahstroud@users.noreply.github.com
+  name = Kiah Stroud
+  email = kiah@kiah.dev
   username = bkiahstroud
 [core]
   autocrlf = input
@@ -27,3 +27,7 @@
   showUntrackedFiles = all
 [init]
   defaultBranch = main
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true

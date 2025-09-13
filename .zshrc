@@ -44,7 +44,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -73,13 +73,14 @@ autoload -Uz compinit && compinit -i
 zstyle ':omz:plugins:eza' 'icons' yes
 
 # Override default zoxide alias "z" to "cd"
-ZOXIDE_CMD_OVERRIDE=cd
+# ZOXIDE_CMD_OVERRIDE=cd
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  aws
   colored-man-pages
   docker
   docker-compose
@@ -88,9 +89,10 @@ plugins=(
   git
   gitfast
   golang
+  helm
   kubectl
   ssh
-  zoxide
+  # zoxide
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
@@ -120,7 +122,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(rbenv init - zsh)"
+# eval "$(rbenv init - zsh)"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -132,7 +134,7 @@ eval "$(rbenv init - zsh)"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Quickly navigate to dev folder
-alias cdd='cd ~/Development/'
+alias cdd='cd ~/dev/'
 
 # Use Neovim instead of Vim
 # alias vim="nvim"
@@ -148,7 +150,7 @@ alias scc='sc console'
 # alias diff='diff -u'
 
 # Quickly get to saved code gists
-alias vimcheats='vim ~/Development/code_cheat_sheet.txt'
+alias vimcheats='vim ~/dev/code_cheat_sheet.txt'
 
 # `docker compose` shortcut
 alias dc='docker compose'
@@ -197,14 +199,17 @@ alias v='nvim'
 
 # alias z='zellij -l welcome'
 alias z='zellij'
-alias zinit='zellij attach --create-background home; zellij --session home action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/Development",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm; zellij attach home'
+alias zinit='zellij attach --create-background home; zellij --session home action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/dev",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm; zellij attach home'
 
 alias gcs='gh copilot suggest'
 alias gce='gh copilot explain'
 
-alias gpg='gpg2'
+# alias gpg='gpg2'
 
 alias clast='fc -ln -1 | pbcopy'
+
+alias ld='lazydocker'
+alias lg='lazygit'
 
 # Accept suggestion from zsh-autosuggestions plugin
 bindkey '^n' autosuggest-accept
@@ -223,8 +228,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # Go
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
+# sqlite
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+
 # Path to anywhere from anywhere (prioritizes dev directories)
-export CDPATH=".:$HOME/Development:$HOME/Development/personal:$HOME"
+export CDPATH=".:$HOME/dev:$HOME/dev/personal:$HOME"
 
 # Defaults for grep
 # Note: for some reason, this causes the vim-gitgitter plugin to stop working
@@ -240,6 +248,8 @@ export CDPATH=".:$HOME/Development:$HOME/Development/personal:$HOME"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export KUBECONFIG=~/.kube/config:~/.kube/vizer
+
 # Java / Ant
 export ANT_HOME="/Users/kiah/dependencies/apache-ant-1.10.12"
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
@@ -249,6 +259,8 @@ export PATH="$ANT_HOME/bin:$PATH"
 export DOOMDIR="$HOME/.doom.d"
 
 export EDITOR="/opt/homebrew/bin/nvim"
+
+export GPG_TTY=$(tty)
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"

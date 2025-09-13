@@ -10,30 +10,29 @@ dory:
   # doesn't exist.
   dnsmasq:
     enabled: true
-    domains:               # array of domains that will be resolved to the specified address
-      - domain: docker     # you can set '#' for a wilcard
+    domains: # array of domains that will be resolved to the specified address
+      - domain: localhost # you can set '#' for a wilcard
         address: 127.0.0.1 # return for queries against the domain
-      - domain: test
-        address: 127.0.0.1
+      - domain: test # you can set '#' for a wilcard
+        address: 127.0.0.1 # return for queries against the domain
     container_name: dory_dnsmasq
-    port: 53  # port to listen for dns requests on.  must be 53 on linux. can be anything that's open on macos
+    port: 53 # port to listen for dns requests on.  must be 53 on linux. can be anything that's open on macos
     # kill_others: kill processes bound to the port we need (see previous setting 'port')
     #   Possible values:
     #     ask (prompt about killing each time. User can accept/reject)
     #     yes|true (go aheand and kill without asking)
     #     no|false (don't kill, and don't even ask)
     kill_others: ask
-    service_start_delay: 5  # seconds to wait after restarting systemd services
-    image: tripox/dory-dnsmasq:latest
+    service_start_delay: 5 # seconds to wait after restarting systemd services
+    image: tripox/dory-dnsmasq:1.1.1
   nginx_proxy:
     enabled: true
     container_name: dory_dinghy_http_proxy
     https_enabled: true
-    ssl_certs_dir: ''  # leave as empty string to use default certs
-    port: 80           # port 80 is default for http
-    tls_port: 443      # port 443 is default for https
-    image: taybenlor/dory-http-proxy:latest
+    ssl_certs_dir: ""
+    port: 80 # port 80 is default for http
+    tls_port: 443 # port 443 is default for https
   resolv:
     enabled: true
     nameserver: 127.0.0.1
-    port: 53  # port where the nameserver listens. On linux it must be 53
+    port: 53 # port where the nameserver listens. On linux it must be 53

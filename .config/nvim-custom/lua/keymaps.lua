@@ -53,8 +53,8 @@ vim.keymap.set('n', '<leader>nf', '<cmd>Oil ~/notes --float<cr>', { desc = 'Open
 local getReletiveFilePath = function()
   local homePath = os.getenv 'HOME'
   local fullPath = vim.fn.expand '%'
-  -- Will match $HOME/Development/my-project/
-  local basePath = homePath .. '/Development/' .. '[^/]+/'
+  -- Will match $HOME/dev/my-project/
+  local basePath = homePath .. '/dev/' .. '[^/]+/'
   local relativePath = fullPath:gsub(basePath, '')
 
   vim.fn.setreg('+', relativePath)
