@@ -7,7 +7,6 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- TODO: add to ftplugin/markdown.lua?
 -- Disable autoformat for markdown files
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "markdown" },
