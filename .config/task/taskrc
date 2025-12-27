@@ -1,0 +1,35 @@
+# [Created by task 3.4.1 10/6/2025 13:02:42]
+# data.location=/Users/kiah/.task
+news.version=3.4.1
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
+
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include bubblegum-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+report.next.labels=ID,Deps,Active,P,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.next.columns=id,depends,start.age,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
+
+context.work.read=project:work
+context.work.write=project:work
+context.soc2.read=pro:work +soc2
+context.soc2.write=pro:work +soc2
+context=work
