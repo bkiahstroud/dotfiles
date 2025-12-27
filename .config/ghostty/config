@@ -5,7 +5,7 @@ cursor-style-blink = false
 font-feature = -calt
 font-size = 16
 shell-integration-features = no-cursor
-theme = tokyonight_night
+theme = TokyoNight Night
 
 quick-terminal-position = center
 quick-terminal-size = 768px,75%
