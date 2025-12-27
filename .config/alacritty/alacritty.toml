@@ -1,0 +1,9 @@
+[general]
+import = ["~/.config/alacritty/themes/tokyo_night.toml"]
+
+[font]
+size = 16
+normal = { family = "FiraCode Nerd Font" }
+
+[window]
+option_as_alt = "Both"
