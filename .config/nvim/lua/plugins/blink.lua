@@ -8,6 +8,7 @@ return {
       ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "hide", "fallback" },
 
+      ["<CR>"] = { "fallback" },
       ["<Tab>"] = {
         function(cmp)
           if cmp.snippet_active() then
