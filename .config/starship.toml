@@ -6,11 +6,13 @@ $git_state\
 $git_metrics\
 $git_status\
 $fill\
+$custom\
 $status\
 $cmd_duration\
 $memory_usage\
 $kubernetes\
 $helm\
+$rust \
 $golang\
 $lua\
 $python\
@@ -45,6 +47,14 @@ disabled = false
 style = 'bold yellow'
 stashed = ''
 
+[rust]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
+[golang]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+
 [ruby]
 format = '[$symbol($version )]($style)'
 symbol = ' '
@@ -53,12 +63,12 @@ symbol = ' '
 format = '[$symbol$context( \($namespace\))]($style) '
 disabled = false
 contexts = [
-  { context_pattern = 'r2-besties', context_alias = 'besties' },
-  { context_pattern = 'r2-gbh-ams2', context_alias = 'gbh' },
-  { context_pattern = 'r2-bbf', context_alias = 'bbf' },
-  { context_pattern = 'r2-staging', context_alias = 'staging' },
-  { context_pattern = 'r2-friends', context_alias = 'friends' },
-  { context_pattern = 'r2-gc', context_alias = 'gc' }
+    { context_pattern = 'r2-besties', context_alias = 'besties' },
+    { context_pattern = 'r2-gbh-ams2', context_alias = 'gbh' },
+    { context_pattern = 'r2-bbf', context_alias = 'bbf' },
+    { context_pattern = 'r2-staging', context_alias = 'staging' },
+    { context_pattern = 'r2-friends', context_alias = 'friends' },
+    { context_pattern = 'r2-gc', context_alias = 'gc' },
 ]
 
 [memory_usage]
@@ -68,3 +78,15 @@ disabled = false
 
 [status]
 disabled = false
+
+[custom.next_task]
+description = "Highest priority taskwarrior"
+command = """
+desc=$(task +PENDING project:work export | jq 'sort_by(.urgency | tonumber) | last  | .description' | sed 's|\"||g')
+echo ${desc:0:55}
+"""
+symbol = " "
+format = "[$symbol]($style) [$output]($style) "
+style = "green"
+shell = ["bash", "--noprofile", "--norc"]
+when = "true"
