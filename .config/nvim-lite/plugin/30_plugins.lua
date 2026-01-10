@@ -372,5 +372,10 @@ end)
 
 now_if_args(function ()
   add('qvalentin/helm-ls.nvim')
-  require('helm-ls').setup()
+  require('helm-ls').setup({
+    conceal_templates = {
+      -- enable the replacement of templates with virtual text of their current values
+      enabled = false,
+    },
+  })
 end)
