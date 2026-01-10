@@ -324,27 +324,29 @@ end)
 now_if_args(function()
   add('neovim/nvim-lspconfig')
 
+  vim.lsp.inlay_hint.enable()
   -- Use `:h vim.lsp.enable()` to automatically enable language server based on
   -- the rules provided by 'nvim-lspconfig'.
   -- Use `:h vim.lsp.config()` or 'after/lsp/' directory to configure servers.
   -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
   vim.lsp.enable({
     'lua_ls',
-    'rust-analyzer',
+    'rust_analyzer',
     'gopls',
     'yamlls',
     'helm_ls',
+    'marksman',
   })
 end)
 
 later(function()
   add('stevearc/conform.nvim')
 
+  -- TODO: write custom "ensure_installed" for missing tools
   require('conform').setup({
-    -- Make sure that necessary CLI tool is available
     formatters_by_ft = {
       lua = { 'stylua' },
-      go = { 'gofmt', 'goimports' }
+      go = { 'goimports', 'gofmt' },
     },
   })
 end)
@@ -352,4 +354,23 @@ end)
 now_if_args(function()
   add('mason-org/mason.nvim')
   require('mason').setup()
+end)
+
+now_if_args(function()
+  add('mason-org/mason-lspconfig.nvim')
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'lua_ls',
+      'gopls',
+      'yamlls',
+      'helm_ls',
+      'marksman',
+      'docker_compose_language_service',
+    }
+  })
+end)
+
+now_if_args(function ()
+  add('qvalentin/helm-ls.nvim')
+  require('helm-ls').setup()
 end)
