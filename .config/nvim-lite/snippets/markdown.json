@@ -1,0 +1,57 @@
+{
+    "Links": {
+        "prefix": ["l", "link"],
+        "body": ["[${1:text}](${2:url}) ${0}"],
+        "description": "Add links"
+    },
+    "URLS": {
+        "prefix": ["u", "url"],
+        "body": ["<${1}> ${0}"],
+        "description": "Add urls"
+    },
+    "Images": {
+        "prefix": "img",
+        "body": ["![${1:alt text}](${2:path}) ${0}"],
+        "description": "Add images"
+    },
+    "Insert code block": {
+        "prefix": ["codeblock", "cb"],
+        "body": ["```${1:language}", "$0", "```"],
+        "description": "Insert fenced code block"
+    },
+    "Insert subscript": {
+        "prefix": "sub",
+        "body": ["${1}<sub>${0}"],
+        "description": "Create a subscript."
+    },
+    "Insert superscript": {
+        "prefix": "sup",
+        "body": ["${1}<sup>${0}"],
+        "description": "Create a superscript."
+    },
+    "Insert Note": {
+        "prefix": ["note", "n"],
+        "body": "> [!NOTE]\n> ",
+        "description": "Insert Note"
+    },
+    "Insert Tip": {
+        "prefix": ["tip", "t"],
+        "body": "> [!TIP]\n> ",
+        "description": "Insert Tip"
+    },
+    "Insert Important": {
+        "prefix": ["important", "imp"],
+        "body": "> [!IMPORTANT]\n> ",
+        "description": "Insert Important"
+    },
+    "Insert Warning": {
+        "prefix": ["warning", "w"],
+        "body": "> [!WARNING]\n> ",
+        "description": "Insert Warning"
+    },
+    "Insert Caution": {
+        "prefix": ["caution", "c"],
+        "body": "> [!CAUTION]\n> ",
+        "description": "Insert Caution"
+    }
+}
