@@ -214,6 +214,20 @@ later(function()
   MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
 end)
 
+later(function() require('mini.move').setup({
+  mappings = {
+    left  = '<S-left>',
+    right = '<S-right>',
+    down  = '<S-down>',
+    up    = '<S-up>',
+
+    line_left  = '<S-left>',
+    line_right = '<S-right>',
+    line_down  = '<S-down>',
+    line_up    = '<S-up>',
+  }
+}) end)
+
 later(function()
   require('mini.operators').setup()
 
@@ -376,6 +390,44 @@ now_if_args(function ()
     conceal_templates = {
       -- enable the replacement of templates with virtual text of their current values
       enabled = false,
+    },
+  })
+end)
+
+later(function ()
+  add('brianhuster/live-preview.nvim')
+  require('livepreview').setup()
+end)
+
+later(function ()
+  add({
+    source = 'obsidian-nvim/obsidian.nvim',
+    checkout = 'v3.15.4',
+    monitor = 'main',
+  })
+  require('obsidian').setup({
+    legacy_commands = false,
+    ui = {
+      enable = false,
+    },
+    workspaces = {
+      {
+        name = "vizer",
+        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work/vizer",
+      },
+      {
+        name = "personal",
+        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal",
+      },
+    },
+    templates = {
+      folder = "templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+    },
+    daily_notes = {
+      template = "daily.md",
+      alias_format = "%B %-d, %Y | %A",
     },
   })
 end)
