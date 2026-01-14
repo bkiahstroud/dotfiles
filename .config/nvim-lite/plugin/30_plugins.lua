@@ -38,13 +38,25 @@ now_if_args(function()
   MiniMisc.setup_termbg_sync()
 end)
 
-now(function() require('mini.notify').setup() end)
-now(function() require('mini.sessions').setup() end)
-now(function() require('mini.starter').setup() end)
-now(function() require('mini.statusline').setup() end)
-now(function() require('mini.tabline').setup() end)
+now(function()
+  require('mini.notify').setup()
+end)
+now(function()
+  require('mini.sessions').setup()
+end)
+now(function()
+  require('mini.starter').setup()
+end)
+now(function()
+  require('mini.statusline').setup()
+end)
+now(function()
+  require('mini.tabline').setup()
+end)
 
-later(function() require('mini.extra').setup() end)
+later(function()
+  require('mini.extra').setup()
+end)
 
 later(function()
   local ai = require('mini.ai')
@@ -63,9 +75,15 @@ later(function()
   })
 end)
 
-later(function() require('mini.align').setup() end)
-later(function() require('mini.bracketed').setup() end)
-later(function() require('mini.bufremove').setup() end)
+later(function()
+  require('mini.align').setup()
+end)
+later(function()
+  require('mini.bracketed').setup()
+end)
+later(function()
+  require('mini.bufremove').setup()
+end)
 
 later(function()
   local miniclue = require('mini.clue')
@@ -107,8 +125,12 @@ later(function()
   })
 end)
 
-later(function() require('mini.cmdline').setup() end)
-later(function() require('mini.comment').setup() end)
+later(function()
+  require('mini.cmdline').setup()
+end)
+later(function()
+  require('mini.comment').setup()
+end)
 
 later(function()
   -- Customize post-processing of LSP responses for a better user experience.
@@ -144,7 +166,9 @@ later(function()
   vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
 end)
 
-later(function() require('mini.diff').setup() end)
+later(function()
+  require('mini.diff').setup()
+end)
 
 later(function()
   require('mini.files').setup({ windows = { preview = true } })
@@ -159,7 +183,9 @@ later(function()
   _G.Config.new_autocmd('User', 'MiniFilesExplorerOpen', add_marks, 'Add bookmarks')
 end)
 
-later(function() require('mini.git').setup() end)
+later(function()
+  require('mini.git').setup()
+end)
 
 later(function()
   local hipatterns = require('mini.hipatterns')
@@ -180,24 +206,30 @@ later(function()
   })
 end)
 
-later(function() require('mini.indentscope').setup() end)
+later(function()
+  require('mini.indentscope').setup()
+end)
 
-later(function() require('mini.jump').setup() end)
+later(function()
+  require('mini.jump').setup()
+end)
 
-later(function() require('mini.jump2d').setup({
-  view = {
-    dim = true,
-    n_steps_ahead = 2,
-  },
+later(function()
+  require('mini.jump2d').setup({
+    view = {
+      dim = true,
+      n_steps_ahead = 2,
+    },
 
-  allowed_lines = {
-    blank = false,
-  },
+    allowed_lines = {
+      blank = false,
+    },
 
-  mappings = {
-    start_jumping = '',
-  },
-}) end)
+    mappings = {
+      start_jumping = '',
+    },
+  })
+end)
 
 -- TODO: move to keymaps
 vim.keymap.set('n', '<CR>', '<Cmd>lua MiniJump2d.start(MiniJump2d.builtin_opts.single_character)<CR>')
@@ -214,19 +246,21 @@ later(function()
   MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
 end)
 
-later(function() require('mini.move').setup({
-  mappings = {
-    left  = '<S-left>',
-    right = '<S-right>',
-    down  = '<S-down>',
-    up    = '<S-up>',
+later(function()
+  require('mini.move').setup({
+    mappings = {
+      left = '<S-left>',
+      right = '<S-right>',
+      down = '<S-down>',
+      up = '<S-up>',
 
-    line_left  = '<S-left>',
-    line_right = '<S-right>',
-    line_down  = '<S-down>',
-    line_up    = '<S-up>',
-  }
-}) end)
+      line_left = '<S-left>',
+      line_right = '<S-right>',
+      line_down = '<S-down>',
+      line_up = '<S-up>',
+    },
+  })
+end)
 
 later(function()
   require('mini.operators').setup()
@@ -246,7 +280,9 @@ later(function()
   require('mini.pairs').setup({ modes = { command = true } })
 end)
 
-later(function() require('mini.pick').setup() end)
+later(function()
+  require('mini.pick').setup()
+end)
 
 later(function()
   -- Define language patterns to work better with 'friendly-snippets'
@@ -273,15 +309,27 @@ later(function()
   -- MiniSnippets.start_lsp_server()
 end)
 
-later(function() require('mini.splitjoin').setup() end)
-later(function() require('mini.surround').setup() end)
-later(function() require('mini.trailspace').setup() end)
-later(function() require('mini.visits').setup() end)
+later(function()
+  require('mini.splitjoin').setup()
+end)
+later(function()
+  require('mini.surround').setup()
+end)
+later(function()
+  require('mini.trailspace').setup()
+end)
+later(function()
+  require('mini.visits').setup()
+end)
 
 now_if_args(function()
   add({
     source = 'nvim-treesitter/nvim-treesitter',
-    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+    hooks = {
+      post_checkout = function()
+        vim.cmd('TSUpdate')
+      end,
+    },
   })
   add({
     source = 'nvim-treesitter/nvim-treesitter-textobjects',
@@ -322,7 +370,9 @@ now_if_args(function()
     return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
   end
   local to_install = vim.tbl_filter(isnt_installed, languages)
-  if #to_install > 0 then require('nvim-treesitter').install(to_install) end
+  if #to_install > 0 then
+    require('nvim-treesitter').install(to_install)
+  end
 
   -- Enable tree-sitter after opening a file for a target language
   local filetypes = {}
@@ -331,7 +381,9 @@ now_if_args(function()
       table.insert(filetypes, ft)
     end
   end
-  local ts_start = function(ev) vim.treesitter.start(ev.buf) end
+  local ts_start = function(ev)
+    vim.treesitter.start(ev.buf)
+  end
   _G.Config.new_autocmd('FileType', filetypes, ts_start, 'Start tree-sitter')
 end)
 
@@ -380,11 +432,11 @@ now_if_args(function()
       'helm_ls',
       'marksman',
       'docker_compose_language_service',
-    }
+    },
   })
 end)
 
-now_if_args(function ()
+now_if_args(function()
   add('qvalentin/helm-ls.nvim')
   require('helm-ls').setup({
     conceal_templates = {
@@ -394,12 +446,12 @@ now_if_args(function ()
   })
 end)
 
-later(function ()
+later(function()
   add('brianhuster/live-preview.nvim')
   require('livepreview').setup()
 end)
 
-later(function ()
+later(function()
   add({
     source = 'obsidian-nvim/obsidian.nvim',
     checkout = 'v3.15.4',
@@ -412,22 +464,22 @@ later(function ()
     },
     workspaces = {
       {
-        name = "vizer",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work/vizer",
+        name = 'vizer',
+        path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work/vizer',
       },
       {
-        name = "personal",
-        path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal",
+        name = 'personal',
+        path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal',
       },
     },
     templates = {
-      folder = "templates",
-      date_format = "%Y-%m-%d",
-      time_format = "%H:%M",
+      folder = 'templates',
+      date_format = '%Y-%m-%d',
+      time_format = '%H:%M',
     },
     daily_notes = {
-      template = "daily.md",
-      alias_format = "%B %-d, %Y | %A",
+      template = 'daily.md',
+      alias_format = '%B %-d, %Y | %A',
     },
   })
 end)

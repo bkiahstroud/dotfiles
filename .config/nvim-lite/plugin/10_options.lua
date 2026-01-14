@@ -1,7 +1,9 @@
 local now, later = MiniDeps.now, MiniDeps.later
 local now_if_args = _G.Config.now_if_args
 
-now(function() vim.cmd('colorscheme miniautumn') end)
+now(function()
+  vim.cmd('colorscheme miniautumn')
+end)
 
 vim.g.have_nerd_font = true
 vim.o.scrolloff = 5
