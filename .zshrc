@@ -262,6 +262,10 @@ export EDITOR="/opt/homebrew/bin/nvim"
 
 export GPG_TTY=$(tty)
 
+if pgrep -fl 'pass-cli' >/dev/null; then
+  export SSH_AUTH_SOCK=$HOME/.ssh/proton-pass-agent.sock
+fi
+
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
 
