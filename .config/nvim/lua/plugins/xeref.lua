@@ -1,3 +1,0 @@
-return {
-  "bkiahstroud/xeref.nvim",
-}
