@@ -262,6 +262,8 @@ export EDITOR="/opt/homebrew/bin/nvim"
 
 export GPG_TTY=$(tty)
 
+export CARGO_TARGET_DIR="$HOME/.cargo/shared_target"
+
 if pgrep -fl 'pass-cli' >/dev/null; then
   export SSH_AUTH_SOCK=$HOME/.ssh/proton-pass-agent.sock
 fi
