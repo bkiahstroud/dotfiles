@@ -156,3 +156,25 @@ nmap_leader('vL', '<Cmd>lua MiniVisits.remove_label()<CR>',       'Remove label'
 -- stylua: ignore end
 
 nmap('\\i', '<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>', 'Toggle inlay hints')
+
+nmap('\\F', function()
+  vim.b.disable_autoformat = (not vim.b.disable_autoformat)
+
+  local msg = vim.b.disable_autoformat and 'disabled' or 'enabled'
+  local level = vim.b.disable_autoformat and 'WARN' or 'INFO'
+  local hl_group = vim.b.disable_autoformat and 'DiagnosticWarn' or 'DiagnosticInfo'
+
+  local id = MiniNotify.add('Format ' .. msg .. ' (buf)', level, hl_group)
+  vim.defer_fn(function() MiniNotify.remove(id) end, 1500)
+end, 'Toggle format (buf)')
+
+nmap('\\f', function()
+  vim.g.disable_autoformat = (not vim.g.disable_autoformat)
+
+  local msg = vim.g.disable_autoformat and 'disabled' or 'enabled'
+  local level = vim.g.disable_autoformat and 'WARN' or 'INFO'
+  local hl_group = vim.g.disable_autoformat and 'DiagnosticWarn' or 'DiagnosticInfo'
+
+  local id = MiniNotify.add('Format ' .. msg .. ' (global)', level, hl_group)
+  vim.defer_fn(function() MiniNotify.remove(id) end, 1500)
+end, 'Toggle format (global)')
