@@ -79,6 +79,9 @@ disabled = false
 [status]
 disabled = false
 
+[custom]
+disabled = false
+
 [custom.next_task]
 description = "Highest priority taskwarrior"
 command = """
