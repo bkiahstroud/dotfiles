@@ -491,10 +491,34 @@ later(function()
         path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal',
       },
     },
+    frontmatter = {
+      enabled = function(path)
+        local path_str = tostring(path)
+        is_template = string.find(path_str, 'templates/', 1, true)
+        is_post = string.find(path_str, 'posts/', 1, true)
+        if is_template or is_post then
+          return false
+        end
+        return true
+      end,
+    },
     templates = {
       folder = 'templates',
       date_format = '%Y-%m-%d',
       time_format = '%H:%M',
+      customizations = {
+        post = {
+          notes_subdir = 'posts',
+          note_id_func = function(title)
+            if title == nil then
+              return nil
+            end
+
+            local name = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+            return name
+          end,
+        },
+      },
     },
     daily_notes = {
       template = 'daily.md',
