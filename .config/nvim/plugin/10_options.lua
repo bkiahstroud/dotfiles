@@ -18,6 +18,12 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.spelloptions = 'camel'
 
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true,
+  },
+})
+
 -- Override options by listing them before mini.basics setup
 now(function()
   require('mini.basics').setup({
