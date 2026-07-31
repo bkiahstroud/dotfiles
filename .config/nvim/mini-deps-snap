@@ -1,0 +1,12 @@
+return {
+  ["conform.nvim"] = "c2526f1cde528a66e086ab1668e996d162c75f4f",
+  ["helm-ls.nvim"] = "f0b9a1723890971a6d84890b50dbf5f40974ea1b",
+  ["live-preview.nvim"] = "5f517e80c1ca734a2bd6ace2115b36c51464f7e9",
+  ["mason-lspconfig.nvim"] = "4823a251e7578a835bb979c37df390fca692ba39",
+  ["mason.nvim"] = "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+  ["mini.nvim"] = "9b935c218ddba02e5dc75c94f90143bce1f7c646",
+  ["nvim-lspconfig"] = "419b082102fa813739588dd82e19a8b6b2442855",
+  ["nvim-treesitter"] = "511e5ccf404f8a96ee31866b079fca033a8a7c4e",
+  ["nvim-treesitter-textobjects"] = "4d55f63252e04c5212daed958e4e940915ff16ce",
+  ["obsidian.nvim"] = "f6b241fa08d157701b9b0850b1251d98f86b122e"
+}

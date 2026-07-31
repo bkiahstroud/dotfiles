@@ -3,7 +3,18 @@ import = ["~/.config/alacritty/themes/tokyo_night.toml"]
 
 [font]
 size = 16
-normal = { family = "FiraCode Nerd Font" }
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
 
 [window]
 option_as_alt = "Both"

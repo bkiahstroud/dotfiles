@@ -2,5 +2,9 @@
 \.gitignore
 ^/README.*
 
-\.config/nvim-custom # For archival purposes only
+# For archival purposes only
+\.stowrc
+\.config/nvim-custom
+\.vimrc
+
 \.DS_Store

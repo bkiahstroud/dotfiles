@@ -13,5 +13,15 @@
     "prefix": "ctime",
     "body": "$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
     "description": "Insert current time (HH:MM:SS)"
+  },
+  "Current version": {
+    "prefix": "cv",
+    "body": "$CURRENT_YEAR.$CURRENT_WEEK.${0:0}",
+    "description": "Insert current version"
+  },
+  "Human filename": {
+    "prefix": "hfn",
+    "body": "$HUMAN_FILENAME",
+    "description": "Insert human-readable filename"
   }
 }

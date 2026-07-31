@@ -292,6 +292,14 @@ later(function()
     -- rust = { 'rust/*.json' },
   }
 
+  local insert_with_lookup = function(snippet)
+    local lookup = {
+      CURRENT_WEEK = vim.fn.strftime("%V") + 1,
+      HUMAN_FILENAME = vim.fn.tr(vim.fn.expand('%:t:r'), "_-", "  "),
+    }
+    return MiniSnippets.default_insert(snippet, { lookup = lookup })
+  end
+
   local snippets = require('mini.snippets')
   local config_path = vim.fn.stdpath('config')
   snippets.setup({
@@ -301,6 +309,9 @@ later(function()
       -- Load from 'snippets/' directory of plugins, like 'friendly-snippets'
       snippets.gen_loader.from_lang({ lang_patterns = lang_patterns }),
     },
+    expand = {
+      insert = insert_with_lookup
+    }
   })
 
   -- By default snippets available at cursor are not shown as candidates in

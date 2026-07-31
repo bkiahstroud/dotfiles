@@ -25,6 +25,23 @@ hooks.location=~/.config/task/hooks
 #include solarized-light-256.theme
 #include no-color.theme
 
+# color.active=color111 on color60
+# color.overdue=color203
+# color.due.today=color215
+# color.due=color111
+# color.blocked=color245
+color.tagged=
+color.label=yellow
+color.alternate=
+# color.recurring=color147
+# color.scheduled=color109
+# uda.taskwarrior-tui.style.context.active
+# uda.taskwarrior-tui.style.calendar.title
+uda.taskwarrior-tui.style.navbar=color141 on black
+uda.taskwarrior-tui.style.command=yellow on black
+# uda.taskwarrior-tui.style.report.scrollbar
+# uda.taskwarrior-tui.style.report.scrollbar.area
+
 report.next.labels=ID,Deps,Active,P,Project,Tag,Recur,S,Due,Until,Description,Urg
 report.next.columns=id,depends,start.age,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
 

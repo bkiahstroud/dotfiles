@@ -248,8 +248,6 @@ export CDPATH=".:$HOME/dev:$HOME/dev/personal:$HOME"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export KUBECONFIG=~/.kube/config:~/.kube/vizer
-
 # Java / Ant
 export ANT_HOME="/Users/kiah/dependencies/apache-ant-1.10.12"
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
@@ -263,6 +261,10 @@ export EDITOR="/opt/homebrew/bin/nvim"
 export GPG_TTY=$(tty)
 
 export CARGO_TARGET_DIR="$HOME/.cargo/shared_target"
+
+if [[ -s "~/.zsh-secure" ]]; then
+  source ~/.zsh-secure;
+fi
 
 if pgrep -fl 'pass-cli' >/dev/null; then
   export SSH_AUTH_SOCK=$HOME/.ssh/proton-pass-agent.sock
