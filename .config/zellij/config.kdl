@@ -130,7 +130,7 @@ keybinds clear-defaults=true {
                 floating true
                 move_to_focused_tab true
                 root_dirs "/Users/kiah/dev;/Users/kiah/dev/vizer"
-                session_layout "compact"
+                session_layout ":compact"
             }
             SwitchToMode "normal"
         }

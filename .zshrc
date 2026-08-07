@@ -248,6 +248,8 @@ export CDPATH=".:$HOME/dev:$HOME/dev/personal:$HOME"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export KUBECONFIG=~/.kube/config
+
 # Java / Ant
 export ANT_HOME="/Users/kiah/dependencies/apache-ant-1.10.12"
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
@@ -262,7 +264,7 @@ export GPG_TTY=$(tty)
 
 export CARGO_TARGET_DIR="$HOME/.cargo/shared_target"
 
-if [[ -s "~/.zsh-secure" ]]; then
+if [[ -s ~/.zsh-secure ]]; then
   source ~/.zsh-secure;
 fi
 
