@@ -45,8 +45,12 @@ uda.taskwarrior-tui.style.command=yellow on black
 report.next.labels=ID,Deps,Active,P,Project,Tag,Recur,S,Due,Until,Description,Urg
 report.next.columns=id,depends,start.age,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description.truncated_count,urgency
 
-context.work.read=project:work
+urgency.annotations.coefficient=0
+
+context.work.read=project:work -discuss
 context.work.write=project:work
-context.soc2.read=pro:work +soc2
-context.soc2.write=pro:work +soc2
+context.planning.read=project:work +discuss
+context.planning.write=project:work +discuss
+context.soc2.read=project:work +soc2
+context.soc2.write=project:work +soc2
 context=work
