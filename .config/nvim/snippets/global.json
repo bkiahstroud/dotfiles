@@ -1,8 +1,8 @@
 {
   "Current datetime": {
     "prefix": "cdtm",
-    "body": "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-    "description": "Insert current datetime (YYYY-mm-dd HH:MM:SS)"
+    "body": "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE",
+    "description": "Insert current datetime (YYYY-mm-dd HH:MM)"
   },
   "Current date": {
     "prefix": "cdate",
@@ -16,7 +16,7 @@
   },
   "Current version": {
     "prefix": "cv",
-    "body": "$CURRENT_YEAR.$CURRENT_WEEK.${0:0}",
+    "body": "v$CURRENT_YEAR.$CURRENT_WEEK.${0:0}",
     "description": "Insert current version"
   },
   "Human filename": {

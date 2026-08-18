@@ -185,3 +185,16 @@ vim.keymap.set('n', 'gyp', function()
   local id = MiniNotify.add('Copied ' .. relPath, 'INFO', 'DiagnosticInfo')
   vim.defer_fn(function() MiniNotify.remove(id) end, 2000)
 end, { desc = 'Copy relative file path' })
+
+vim.keymap.set('n', 'gyf', function()
+  local filename = vim.fn.expand('%:t')
+  vim.fn.setreg('+', filename)
+  local id = MiniNotify.add('Copied ' .. filename, 'INFO', 'DiagnosticInfo')
+  vim.defer_fn(function() MiniNotify.remove(id) end, 2000)
+end, { desc = 'Copy filename' })
+
+vim.keymap.set('n', '<C-w>d', function()
+  vim.g.disable_windiff = (not vim.g.disable_windiff)
+  local cmd = vim.g.disable_windiff and 'windo diffthis' or 'windo diffoff'
+  vim.cmd(cmd)
+end, { desc = 'Toggle windiff' })
