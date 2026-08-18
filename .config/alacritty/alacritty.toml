@@ -18,3 +18,7 @@ style = "Italic"
 
 [window]
 option_as_alt = "Both"
+
+[terminal.shell]
+program = "/opt/homebrew/bin/fish"
+args = ["--login"]
