@@ -14,5 +14,3 @@ abbr -a tt taskwarrior-tui
 
 abbr -a lg lazygit
 abbr -a ld lazydocker
-
-abbr -a z zellij

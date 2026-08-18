@@ -274,6 +274,7 @@ fi
 
 eval "$(starship init zsh)"
 eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
