@@ -10,7 +10,7 @@ if status is-interactive
   set -gx KUBECONFIG $HOME/.kube/config
   set -gx CARGO_TARGET_DIR $HOME/.cargo/shared_target
 
-  fish_vi_key_bindings
+  set -g fish_key_bindings fish_hybrid_key_bindings
 
   if test -s $HOME/local.fish
     source $HOME/local.fish
