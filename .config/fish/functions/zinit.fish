@@ -1,0 +1,3 @@
+function zinit --wraps='zellij attach --create home -- zellij action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/dev;/Users/kiah/dev/vizer",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm' --description 'zellij attach --create home -- zellij action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/dev;/Users/kiah/dev/vizer",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm'
+    zellij attach --create home -- zellij action launch-or-focus-plugin --floating --configuration cwd="/Users/kiah",root_dirs="/Users/kiah/dev;/Users/kiah/dev/vizer",session_layout=":compact" file:~/.config/zellij/plugins/zellij-sessionizer.wasm
+end
