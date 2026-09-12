@@ -6,6 +6,7 @@ if status is-interactive
   fish_add_path -g $HOME/.local/bin
   fish_add_path -g $HOME/.cargo/bin
   fish_add_path -g $HOME/.krew/bin
+  fish_add_path -g $HOME/.docker/bin
   fish_add_path -g /opt/podman/bin
 
   set -gx EDITOR (command -v nvim)
