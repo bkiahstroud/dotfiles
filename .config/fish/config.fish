@@ -13,6 +13,7 @@ if status is-interactive
   set -gx GPG_TTY (tty)
   set -gx KUBECONFIG $HOME/.kube/config
   set -gx CARGO_TARGET_DIR $HOME/.cargo/shared_target
+  set -gx SOPS_AGE_KEY_FILE $HOME/.age/key.txt
 
   set -g fish_key_bindings fish_hybrid_key_bindings
 
