@@ -1,0 +1,126 @@
+providers:
+  webSearchOrder:
+    - google
+    - duckduckgo
+    - startpage
+    - ecosia
+    - mojeek
+    - public
+  webSearchExclude:
+    - perplexity
+    - gemini
+    - anthropic
+    - codex
+    - xai
+    - zai
+    - exa
+    - tinyfish
+    - jina
+    - kagi
+    - tavily
+    - firecrawl
+    - brave
+    - kimi
+    - parallel
+    - synthetic
+    - searxng
+  fetch: auto
+bash:
+  patterns:
+    - match: "helm upgrade *"
+      approval: deny
+    - match: "helm install *"
+      approval: deny
+    - match: "*psql*"
+      approval: deny
+    - match: "*aws *"
+      approval: deny
+    - match: "*ssh *"
+      approval: deny
+    - match: "git add*"
+      approval: deny
+    - match: "git commit*"
+      approval: deny
+    - match: "git push*"
+      approval: deny
+    # - match: "sed *"
+    #   approval: prompt
+    # - match: "echo *"
+    #   approval: prompt
+    - match: "*deploy*"
+      approval: prompt
+    - match: "*kubectl*"
+      approval: prompt
+    - match: "*helm *"
+      approval: prompt
+symbolPreset: nerd
+theme:
+  dark: dark-tokyo-night
+  light: light
+setupVersion: 2
+statusLine:
+  preset: nerd
+  separator: powerline-thin
+  sessionAccent: true
+  transparent: false
+  compactThinkingLevel: true
+  showHookStatus: true
+terminal:
+  showProgress: false
+tui:
+  tight: true
+display:
+  shimmer: kitt
+  smoothStreaming: true
+  showTokenUsage: true
+defaultThinkingLevel: auto
+steeringMode: one-at-a-time
+doubleEscapeAction: rewind
+tools:
+  approvalMode: yolo
+autoResume: true
+startup:
+  showSplash: false
+power:
+  sleepPrevention: display
+compaction:
+  methodOrder:
+    - snapcompact
+    - remote
+    - soft
+memory:
+  backend: "off"
+edit:
+  mode: hashline
+readLineNumbers: true
+read:
+  renderMarkdown: true
+lsp:
+  formatOnWrite: true
+  diagnosticsOnEdit: true
+bashInterceptor:
+  enabled: true
+checkpoint:
+  enabled: true
+github:
+  enabled: true
+security:
+  enabled: true
+plan:
+  defaultOnStartup: true
+task:
+  eager: default
+  enableLsp: true
+  isolation:
+    enabled: false
+exa:
+  enabled: false
+secrets:
+  enabled: true
+includeUsage: global
+composer:
+  shape: band
+modelRoles:
+  {}
+dev:
+  autoqaConsent: denied
