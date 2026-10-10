@@ -6,6 +6,7 @@ $git_state\
 $git_metrics\
 $git_status\
 $shell\
+$hostname\
 $fill\
 $custom\
 $status\
@@ -50,6 +51,9 @@ disabled = false
 [git_status]
 style = 'bold yellow'
 stashed = ''
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style)'
 
 [rust]
 format = '[$symbol($version )]($style)'
