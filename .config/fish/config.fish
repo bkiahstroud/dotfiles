@@ -20,6 +20,7 @@ if status is-interactive
     source $HOME/local.fish
   end
 
+  brew shellenv | source
   zoxide init fish | source
   starship init fish | source
 end

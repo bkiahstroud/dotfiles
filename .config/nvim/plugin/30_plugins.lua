@@ -517,6 +517,13 @@ later(function()
       folder = 'templates',
       date_format = '%Y-%m-%d',
       time_format = '%H:%M',
+      substitutions = {
+        devops_sync_alias = function(ctx)
+          local display_name = ctx.partial_note and ctx.partial_note:display_name()
+          local alias = 'DevOps Sync | ' .. display_name:gsub('%-devops%-sync', '')
+          return alias
+        end,
+      },
       customizations = {
         post = {
           notes_subdir = 'posts',
@@ -527,6 +534,15 @@ later(function()
 
             local name = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
             return name
+          end,
+        },
+        ["devops-sync"] = {
+          note_id_func = function(title)
+            local days_from_present = tonumber(title)
+            local future_time = os.time() + (days_from_present * 24 * 60 * 60)
+            local date = os.date('%Y-%m-%d', future_time)
+
+            return date .. '-devops-sync'
           end,
         },
       },

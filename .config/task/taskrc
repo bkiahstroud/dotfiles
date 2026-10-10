@@ -53,4 +53,8 @@ context.planning.read=project:work +discuss
 context.planning.write=project:work +discuss
 context.soc2.read=project:work +soc2
 context.soc2.write=project:work +soc2
+
+sync.server.url=http:\/\/bazzite.local:7425/
+include ./sync_secret
+recurrence=on
 context=work
