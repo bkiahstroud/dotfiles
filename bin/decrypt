@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+umask 077
+
+sops decrypt --output .omp/agent/models.yml .omp/agent/models.enc.yml

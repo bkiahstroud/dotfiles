@@ -1,0 +1,68 @@
+providers:
+    cyclops:
+        baseUrl: ENC[AES256_GCM,data:TecFdN5aLGSmqZlv0gnW40xCf0F23LkhYzIHpJKOC7MLeSQ0Wr4nUQ==,iv:7P0q7na6gDqLOgXIqpedwPZAmZ0uMDlKAB/hAyz1UXY=,tag:NXxQzcSWBGLN6Cogib4DOg==,type:str]
+        apiKey: ENC[AES256_GCM,data:s1NYOl+Lr+T5UtsAfcpRLixFdCYGXB+gQQc9GSYaSyfpH+dP,iv:u7iQW7JmUuNrnfMHIelKBeAcRJINt/E7FRYtGobN1gw=,tag:yQLJnMRjsmpzc2FuEmhPMA==,type:str]
+        api: openai-responses
+        models:
+            - id: ENC[AES256_GCM,data:qPwGUOrqXzw2nIc+2v59r5/QHcDoa8Dt6TMNhfjD4mtt6Q==,iv:8DkUkO2V6kffgtdl2xMr03CtURRurBi5S01ZYVYGwAM=,tag:aHpc+0txTnOxKJ37Fux2Jg==,type:str]
+              name: ENC[AES256_GCM,data:iSGmP1zKgvx3mwh1xttPfbbHBs86n51lUj1usuwY,iv:a9ErVea4ArRrP2IGsH0IoTkqLvYRKJnqXvJ5/eWeIJs=,tag:h7y+IO2FRQhyDqEA4VFvwA==,type:str]
+              reasoning: true
+              cost:
+                input: 0
+                output: 0
+                cacheRead: 0
+                cacheWrite: 0
+    beast:
+        baseUrl: ENC[AES256_GCM,data:4Lm/rspTDOnDle4ONPe69qemY5ZxetBo2gA31uq+DhL8qAUeUUx9XCTnOK2E4TR5mwbXdnpWqiQ=,iv:aDoUvrez9FZFX8rq2K9gW8/falsObm9YBSc12aeHTeo=,tag:LjtZH5J+VQRXnwwIntvh7Q==,type:str]
+        apiKey: ENC[AES256_GCM,data:+En9ULd5Pc/LG3Ezf+HuhMe/OrNp2tE+GKY1vtYuL4qJrgc2,iv:YadIxikb4FNEsAwqlIrUtXBxSnkXzi8pisCbu9zfeMI=,tag:kwfE3X/qIQhfZOEeZ1r3UA==,type:str]
+        api: openai-responses
+        models:
+            - id: ENC[AES256_GCM,data:hyr525m8k7KnEwK3XzbUk5Ry,iv:r/fXrPJKefD7Mwa+ogWDPOBbz+12tvsuDEaejOHH6MA=,tag:GAyGxoi3nVJb5bwTFR8jvA==,type:str]
+              name: ENC[AES256_GCM,data:Uexjxp5vaV/68FoNn9yqqWFrBFaQRpRg3thcnsp8xxW8uQ==,iv:nblxUWxitcm3dj4YrKA4LGFi/GFEr06vN+uoG2ZZ+Co=,tag:kJl/VzORIa4rqy8YCXWajg==,type:str]
+              reasoning: true
+              cost:
+                input: 0
+                output: 0
+                cacheRead: 0
+                cacheWrite: 0
+    wolverine:
+        baseUrl: ENC[AES256_GCM,data:nRU8dCsynxnmh7VgDNNX61TPWIGT5tfraZpyP8kIScu0QZNYKiau9cS0VNWRdtBYcKcLLSQ=,iv:5OLrHZo3oGZNmkVIu50fazw2sEL7u08/MAeVHc1YIMk=,tag:9RN+OR/d2RB8Sz0ZuUMnWg==,type:str]
+        apiKey: ENC[AES256_GCM,data:iy97UEr8uaEvSASmYFH6VvPa5t0A19lE6dSoLEhlNpK2CBNU,iv:2paRg9OrzKt8LYjvnvMUowuy3/5tmkP7uPhwgx8EaqE=,tag:pYSiqhsNY9Z5AjDW6kAvHw==,type:str]
+        api: openai-responses
+        models:
+            - id: ENC[AES256_GCM,data:B/cU/2qJBIJSWQegVj3Nx63NRUXWJOoH,iv:SN28bT5kZkqtkTTuR2WY46YJjeXg44YMTxMJ1LQMcCI=,tag:/+e5wxCem3dLOoxwHAmDrg==,type:str]
+              name: ENC[AES256_GCM,data:MkxWCD4/TdUBuGdv6y/IVD/3922FzeLUlAtZ,iv:ejPbD+ozN6zKxJ+kt0CPYwwNG+WrWBlz6pBhCOO2erA=,tag:ZF5KcUAo0mcTS9Delu4VBQ==,type:str]
+              reasoning: true
+              cost:
+                input: 0
+                output: 0
+                cacheRead: 0
+                cacheWrite: 0
+    wolverine1:
+        baseUrl: ENC[AES256_GCM,data:32SNg7G065jwF6bzfDx5esei37sQ6VlejiA3SRAt8sOWcN2wh0E/rKElblw=,iv:HIGNxQeqsJzyzvdKp7Pw9LtQKUGjo85VdtgsLsMNH6M=,tag:EVCNh6b5St4ivW+MWy5MbA==,type:str]
+        apiKey: ENC[AES256_GCM,data:MBn1Obm3gqIJaRdxerTP4lottKg/4E9qt/luALDzRyoKFdQX,iv:43BPWD0zFDTMfY4miJEbZhJ0zSfBXy+84meAZU2t7ds=,tag:wXoUwEriUIJs5dfjSLnj8g==,type:str]
+        api: openai-responses
+        models:
+            - id: ENC[AES256_GCM,data:ISXwnKvCwqXLnZK2Q2D6tEy69X8IZHgk1FIjUw==,iv:THo503JseJ15aaVV4ZKV2fdpQeoxTtrjxcH19MIYkls=,tag:O+su19yi7qrXFaaKg208/g==,type:str]
+              name: ENC[AES256_GCM,data:P0uiIUpcI4FZ/qyfNbaraVQPsSqKu0O1fMuI3g==,iv:Fct50IZ5H7W/qP9sJsN5W0AAAiJmVuJ4c8Bij16ZlNw=,tag:aPQbauA22sWbqzlMdAK4RQ==,type:str]
+              reasoning: true
+              cost:
+                input: 0
+                output: 0
+                cacheRead: 0
+                cacheWrite: 0
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzMlFvUGRwS3pvL0VCeUNk
+            cnVrM1RjR0ZpV1ZYc2g5NFVxV2ZVKy83K1NRCktHWHRKamxHdDZOSHVtTVpCbWJs
+            eWswTVRsRmdvNWM5UmdWakhCNkpGRncKLS0tIEJ1WEVYcDJNNVQ3V3RaZm1QTHVx
+            RVQrd0JYNFFxSnhKQlFMbFEzQkU3WmcKkNGjdsVfNdn1QQr2gb+gr4j4LCLACa2b
+            GviCNETTsPWmFqma4Y8G4RDJwaAKIYmeoyuPT6fD0fEzXnjQQacxEA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age16pe06tr6zl2pwx3yyawrlkc75z59jtkfwv4lysxp7lq8w34zxvsq3tjk9y
+    encrypted_regex: ^(apiKey|baseUrl|id|name)$
+    lastmodified: "2026-11-15T14:43:31Z"
+    mac: ENC[AES256_GCM,data:C+VGI+4bGjqi8Q/wQ7YGhVtvJsWFXxGkwn3b3PBksGON9UEH1zozZ4CrCcGbBarLGmOmKG87KsfMCLlK5+IUVPlkE4dz3y0hj3lTQ8gY+2gn/pfBZgcr9KGI1Q8h1otot5Vq6WxaWz3QDRPxJWy1gBLqEkJi3kDesUidFF36wfw=,iv:k/eBHS3aNW1YMqpdC2G8bU6aV/Wm306S9wDMY411ql4=,tag:xj9Z3pluWa9112yDHMD9BQ==,type:str]
+    version: 3.13.3

@@ -1,0 +1,5 @@
+creation_rules:
+  - path_regex: '^\.omp/agent/models\.enc\.yml$'
+    encrypted_regex: '^(apiKey|baseUrl|id|name)$'
+    age:
+      - "age16pe06tr6zl2pwx3yyawrlkc75z59jtkfwv4lysxp7lq8w34zxvsq3tjk9y"

@@ -1,6 +1,11 @@
 \.git
 \.gitignore
+\.gitattributes
 ^/README.*
+\.sops.yaml
+bin/*
+.omp/agent/config.yml.lock
+.*\.enc\..*
 
 # For archival purposes only
 \.stowrc
