@@ -4,3 +4,5 @@ en.utf-8.add*
 
 .omp/agent/models.yml
 .omp/agent/config.yml.lock
+
+.config/task/sync_secret.ini

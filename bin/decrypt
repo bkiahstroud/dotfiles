@@ -2,3 +2,4 @@
 umask 077
 
 sops decrypt --output .omp/agent/models.yml .omp/agent/models.enc.yml
+sops decrypt --output .config/task/sync_secret.ini .config/task/sync_secret.enc.ini

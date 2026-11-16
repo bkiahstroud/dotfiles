@@ -55,6 +55,6 @@ context.soc2.read=project:work +soc2
 context.soc2.write=project:work +soc2
 
 sync.server.url=http:\/\/bazzite.local:7425/
-include ./sync_secret
+include ./sync_secret.ini
 recurrence=on
 context=work
